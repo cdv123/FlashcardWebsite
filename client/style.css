@@ -1,0 +1,7 @@
+h1{
+    font-size: 20px;
+    align-items: center;
+}
+.grid-container{
+    display: grid;
+}
