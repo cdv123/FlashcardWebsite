@@ -4,20 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Flashcardlet</title>
+    <!--Bootstrap(2022) see README for details-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h1>Flashcardlet</h1>
-    <div class="grid-container">
-        <div class="grid-item">1</div>
-        <div class="grid-item">2</div>
-        <div class="grid-item">3</div>
-        <div class="grid-item">4</div>
-        <div class="grid-item">5</div>
-        <div class="grid-item">6</div>
-        <div class="grid-item">7</div>
-        <div class="grid-item">8</div>
-        <div class="grid-item">9</div>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" id = "title" href="#">Flashcardlet
+            <small>Work smarter, not harder</small>
+          </a>
+        </div>
+            
+     </nav>
+     
+     <button id = "right-arrow" type="button" class="btn btn-primary">
+        &#x2192;
+    </button>
+    <button id = "left-arrow" type="button" class="btn btn-primary">
+        &#x2190;
+    </button>   
+    <div class="container">
+        
+        <div class="row"  id = "no-gutters">
+          <div class="col">Column</div>
+          <div class="col">Column</div>
+          <div class="col">Column</div>
+          <div class="w-100"></div>
+          <div class="col">Column
+       </div>
+          <div class="col">Column</div>
+          <div class="col">Column </div>
+          <div class="w-100"></div>
+          <div class="col">Column</div>
+          <div class="col">Column</div>
+          <div class="col">Column</div>
+        </div>
     </div>
+    <h2 id = "add-flashcard">Add a Flashcard</h2>
+    <h2 id = "add-review">Add a review</h2>
 </body>
 </html>
