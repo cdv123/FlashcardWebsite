@@ -9,11 +9,13 @@
     <title>Flashcardlet</title>
     <!--Bootstrap(2022) see README for details-->
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+
 </head>
 <body>
+  <!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <nav class="navbar navbar-expand-lg bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" id = "title" href="#">Flashcardlet
@@ -22,31 +24,102 @@
         </div>
             
      </nav>
-     
+     <select class="form-select" aria-label="Default select example">
+      <option selected>Please select subject</option>
+      <option value="1">Subject 1</option>
+      <option value="2">Subject 2</option>
+      <option value="3">Subject 3</option>
+    </select>
      <button id = "right-arrow" type="button" class="btn btn-primary">
         &#x2192;
     </button>
     <button id = "left-arrow" type="button" class="btn btn-primary">
         &#x2190;
     </button>   
+    
     <div class="container">
         
         <div class="row"  id = "no-gutters">
-          <div class="col">Column</div>
-          <div class="col">Column</div>
-          <div class="col">Column</div>
+          <div class="col">  
+            <span class = "flashcards"> Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
+          </div>
+          <div class="col"><span class = "flashcards" > Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span></div>
+          <div class="col"><span class = "flashcards"> Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span></div>
           <div class="w-100"></div>
-          <div class="col">Column
-       </div>
-          <div class="col">Column</div>
-          <div class="col">Column </div>
+          <div class="col"><span class = "flashcards"> Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span></div>
+          <div class="col"><span class = "flashcards"> Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span></div>
+          <div class="col"><span class = "flashcards"> Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span></div>
           <div class="w-100"></div>
-          <div class="col">Column</div>
-          <div class="col">Column</div>
-          <div class="col">Column</div>
+          <div class="col"><span class = "flashcards"> Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span></div>
+          <div class="col"><span class = "flashcards"> Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span></div>
+          <div class="col"><span class = "flashcards"> Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span></div>
         </div>
+    </div> 
+    <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Reviews</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h2 id = "current-reviews">Current Reviews</h2>
+            
+            <h2 id = "add-review">Add a review</h2>
+    <form id = "review">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Write your name here">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Select the flashcard to review</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter flashcard ID here">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Review Title</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Write your review title here">
+      </div>
+      <div class="form-group">
+        <span class="form-group-text">Content</span>
+        <textarea class="form-control" aria-label="With textarea" placeholder="Write the content of your review here"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="rating1">Rate this flashcard out of 5:</label>
+        <div id="rating1" class="star-rating" role="rating" data-rating="3">
+          <span id = "star1"class="star" data-value="1">&#9733;<span class="star-notification"><span id = "tooltiptext1"class="tooltiptext">Terrible</span></span></span>
+          <span id = "star2"class="star" data-value="2">&#9733;<span class="star-notification"><span id = "tooltiptext2"class="tooltiptext">Bad</span></span></span>
+          <span id = "star3"class="star" data-value="3">&#9733;<span class="star-notification"><span id = "tooltiptext3"class="tooltiptext">Okay</span></span></span>
+          <span id = "star4"class="star" data-value="4">&#9733;<span class="star-notification"><span id = "tooltiptext4"class="tooltiptext">Good</span></span></span>
+          <span id = "star5"class="star"data-value="5">&#9733;<span class="star-notification"><span id = "tooltiptext5"class="tooltiptext">Excellent</span></span></span>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit Review</button>
+    </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button>
+          </div>
+        </div>
+      </div>
     </div>
+    
     <h2 id = "add-flashcard">Add a Flashcard</h2>
-    <h2 id = "add-review">Add a review</h2>
+    <form id = "flashcard_form">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Front of Flashcard</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter front of flashcard here">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Back of Flashcard</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter back of flashcard here">
+      </div>
+      <div id = "subject"class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" class = "form-control" placeholder="Enter subject of flashcard">
+      </div>
+      <button type="submit" class="btn btn-primary">Make flashcard</button>
+    </form>
+    
 </body>
 </html>

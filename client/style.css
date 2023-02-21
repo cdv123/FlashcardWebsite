@@ -2,7 +2,7 @@
     margin: 2px;
 }
 .container{
-    margin-top: 10%;
+    margin-top: 2%;
     width: 100%;
     line-height: 2000%;
     transition-duration: 0.2;
@@ -23,14 +23,16 @@
 .row{
     width: 100%;
 }
+
 #no-gutters{
     margin-right: 0;
     margin-left: 0;
 }
 .col{
     background-color: lightblue;
-    height: 20%;
     text-align: center;
+    max-height: 300px;
+    width: fit-content;
 }
 #left-arrow{
     position: relative;
@@ -47,7 +49,21 @@
     font-size: 20px;
     margin-top: 5%;
 }
+.flashcards{
+    cursor: pointer;
+}
+.see-reviews{
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer;
+    z-index: 10;
+}
 #add-review{
+    margin-left: 5%;
+    font-size: 20px;
+    margin-top: 5%;
+}
+#current-reviews{
     margin-left: 5%;
     font-size: 20px;
     margin-top: 5%;
@@ -62,4 +78,65 @@ nav{
     top: 0;
     margin-top: 0;
     width: 100%;
+}
+#flashcard_form{
+    margin-top: 3%;
+    margin-left: 5%;
+}
+.form-select{
+    margin-top: 10%;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    width: 20% !important;
+}
+#rating1{
+
+    width: fit-content;
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+.star{
+    cursor: pointer;
+    color: blue;
+    z-index: 100;
+    transition-duration: 0.2s;
+}
+.yellow{
+    transition-duration: 0.2s;
+    color: gold;
+}
+.tooltiptext{
+    visibility: hidden;
+    width: 120px;
+    background-color: rgb(149, 149, 250);
+    color: black;
+    border-color: black;
+    border: solid;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;  
+    width: fit-content;
+}
+
+#star1:hover #tooltiptext1{
+    visibility: visible;
+}
+#star2:hover #tooltiptext2{
+    visibility: visible;
+}
+#star3:hover #tooltiptext3{
+    visibility: visible;
+}
+#star4:hover #tooltiptext4{
+    visibility: visible;
+}
+#star5:hover #tooltiptext5{
+    visibility: visible;
+}
+#review{
+    margin-left: 5%;
+}
+#subject{
+    margin-bottom: 2%;
 }
