@@ -1,6 +1,5 @@
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    console.log('DOM fully loaded and parsed');
     let rightArrow = document.getElementById("right-arrow")
     let leftArrow = document.getElementById("left-arrow")
     let container = document.querySelector(".container")
@@ -10,7 +9,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     for (let i = 0; i<stars.length; i++){
         stars[i].addEventListener("click",function(){
             for (let j = 0; j<= i; j++){
-                console.log(stars[j])
                 stars[j].classList.add("yellow")
             }
             for (let j = i+1; j<stars.length; j++){

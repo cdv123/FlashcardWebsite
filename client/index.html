@@ -16,14 +16,28 @@
 <body>
   <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <nav class="navbar navbar-expand-lg bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" id = "title" href="#">Flashcardlet
-            <small>Work smarter, not harder</small>
-          </a>
-        </div>
-            
-     </nav>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" id = "title" href="#">Flashcardlet
+        <small>Work smarter, not harder</small>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#subject1">Make a flashcard</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
      <select class="form-select" aria-label="Default select example">
       <option selected>Please select subject</option>
       <option value="1">Subject 1</option>
@@ -40,19 +54,55 @@
     <div class="container">
         
         <div class="row"  id = "no-gutters">
-          <div class="col">  
-            <span class = "flashcards"> Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
+          <div class="col">
+            <textarea class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
+            <span class = "flashcards" >See other side of flashcard</span>
+            <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
           </div>
-          <div class="col"><span class = "flashcards" > Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span></div>
-          <div class="col"><span class = "flashcards"> Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span></div>
-          <div class="w-100"></div>
-          <div class="col"><span class = "flashcards"> Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span></div>
-          <div class="col"><span class = "flashcards"> Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span></div>
-          <div class="col"><span class = "flashcards"> Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span></div>
-          <div class="w-100"></div>
-          <div class="col"><span class = "flashcards"> Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span></div>
-          <div class="col"><span class = "flashcards"> Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span></div>
-          <div class="col"><span class = "flashcards"> Column </span><span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span></div>
+          <div class="col">
+            <textarea class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
+            <span class = "flashcards" >See other side of flashcard</span>
+            <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
+          </div>
+          <div class="col">
+            <textarea readonly class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
+            <span class = "flashcards" >See other side of flashcard</span>
+            <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
+          </div>
+        </div>
+        <div class="row"  id = "no-gutters">
+          <div class="col">
+            <textarea class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
+            <span class = "flashcards" >See other side of flashcard</span>
+            <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
+          </div>
+          <div class="col">
+            <textarea class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
+            <span class = "flashcards" >See other side of flashcard</span>
+            <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
+          </div>
+          <div class="col">
+            <textarea class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
+            <span class = "flashcards" >See other side of flashcard</span>
+            <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
+          </div>
+        </div>
+        <div class="row"  id = "no-gutters">
+          <div class="col">
+            <textarea class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
+            <span class = "flashcards" >See other side of flashcard</span>
+            <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
+          </div>
+          <div class="col">
+            <textarea class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
+            <span class = "flashcards" >See other side of flashcard</span>
+            <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
+          </div>
+          <div class="col">
+            <textarea class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
+            <span class = "flashcards" >See other side of flashcard</span>
+            <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
+          </div>
         </div>
     </div> 
     <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -64,6 +114,10 @@
           </div>
           <div class="modal-body">
             <h2 id = "current-reviews">Current Reviews</h2>
+            <div class = "list-of-reviews">
+              <h3 class = "review-titles"> Review Title - rating out of 5</h3>
+              <p>Review content</p>
+              <p>written by</p></div>
             
             <h2 id = "add-review">Add a review</h2>
     <form id = "review">
@@ -114,7 +168,7 @@
         <label for="exampleInputPassword1">Back of Flashcard</label>
         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter back of flashcard here">
       </div>
-      <div id = "subject"class="form-group">
+      <div id = "subject1"class="form-group">
         <label for="subject">Subject</label>
         <input type="text" class = "form-control" placeholder="Enter subject of flashcard">
       </div>

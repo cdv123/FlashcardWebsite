@@ -4,13 +4,21 @@
 .container{
     margin-top: 2%;
     width: 100%;
-    line-height: 2000%;
     transition-duration: 0.2;
     opacity: 1;
+    display: grid;
+    line-height: 1500%;
 }
 .fade{
     transition-duration: 0.2s;
     opacity: 0;
+}
+.flashcard-text{
+    resize: none;
+    background-color: lightblue !important;
+    border: none !important;
+    height: 55%;
+    margin-bottom: 0 !important;
 }
 .fade-in{
     transition-duration: 0.2s;
@@ -32,7 +40,21 @@
     background-color: lightblue;
     text-align: center;
     max-height: 300px;
-    width: fit-content;
+
+}
+
+.list-of-reviews{
+    border: solid;
+    border-color: black;
+    width: 80%;
+    height: fit-content;
+    margin-left: 10%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+.review-titles{
+    font-size: 20px;
+    margin-bottom: 5%;
 }
 #left-arrow{
     position: relative;
