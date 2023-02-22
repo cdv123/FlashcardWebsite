@@ -8,5 +8,21 @@ const path = require('path')
 app.use(cors())
 app.use(express.static(path.join(__dirname, 'client')))
 app.use(express.json())
-app.listen(port)
+
+const fileNameForFlashcards =  './flashcards.json'
+const flashcards = require(fileNameForFlashcards)
+
+app.get('/flashcards',function(req,resp){
+    const flashcardKeys = Object.keys(flashcards)
+    resp.send(flashcardKeys)
+})
+
+const fileNameForReviews =  './reviews.json'
+const reviews = require(fileNameForReviews)
+
+app.get('/reviews',function(req,resp){
+    const reviewKeys = reviews
+    resp.send(reviews)
+})
+
 module.exports = app
