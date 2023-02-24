@@ -1,6 +1,18 @@
 *{
     margin: 2px;
 }
+
+.flashcard-back-text{
+    z-index: 2;
+    resize: none;
+    background-color: lightblue !important;
+    border: none !important;
+    height: 55%;
+    margin-bottom: 0 !important;
+}
+.hide{
+    display: none !important;
+}
 .container{
     margin-top: 2%;
     width: 100%;
@@ -13,7 +25,8 @@
     transition-duration: 0.2s;
     opacity: 0;
 }
-.flashcard-text{
+
+.flashcard-front-text{
     resize: none;
     background-color: lightblue !important;
     border: none !important;
@@ -161,4 +174,7 @@ nav{
 }
 #subject{
     margin-bottom: 2%;
+}
+#select-edit{
+    margin-top: 3%;
 }

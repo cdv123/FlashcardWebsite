@@ -5,40 +5,35 @@
             "subject": "Math",
             "date_of_creation":"21/02/2023",
             "front": "What is the integral of cosx",
-            "back": "sinx",
-            "additional_tags":["Calculus", "Integration"]
+            "back": "sinx"
         },
         {
             "id":2,
             "subject": "Physics",
             "date_of_creation":"20/02/2023",
             "front": "What is the moment of inertia of a disk",
-            "back": "1/2mR^2 where R is the radius of the disk and m is the mass of the disk",
-            "additional_tags": ["Mechanics","Moment of Inertia"]
+            "back": "1/2mR^2 where R is the radius of the disk and m is the mass of the disk"
         },
         {
             "id":3,
             "subject": "History",
             "date_of_creation":"19/02/2023",
             "front":"What was the date of the gulf of Tonkin incident",
-            "back": "2 August 1964",
-            "additional_tags": ["American History", "Vietnam War", "Vietnamese History"]
+            "back": "2 August 1964"
         },
         {
             "id":4,
             "subject": "Physics",
             "date_of_creation": "12/02/2023",
             "front": "What is Newton's Second Law of motion",
-            "back": "Force is equal to the rate of change of momentum (which equals to force multiplied by acceleration if mass is constant)",
-            "additional_tags":["Mechanics","Newton's Law of motion"]
+            "back": "Force is equal to the rate of change of momentum (which equals to force multiplied by acceleration if mass is constant)"
         },
         {
             "id":5,
             "subject": "Physics",
             "date_of_creation":"14/02/2023",
             "front": "What is the equation for the moment of inertia of a rod about one of its ends",
-            "back": "1/3mL^2 where L is the length of the rod and m is the mass of the rod",
-            "additional_tags":["Moment of Inertia","Mechanics"]
+            "back": "1/3mL^2 where L is the length of the rod and m is the mass of the rod"
         }
     ]
 }

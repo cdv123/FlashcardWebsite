@@ -4,6 +4,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const leftArrow = document.getElementById('left-arrow')
   const container = document.querySelector('.container')
   const flashcards = document.querySelectorAll('.flashcards')
+  const front = document.querySelectorAll(".flashcard-front-text")
+  const back = document.querySelectorAll(".flashcard-back-text")
   const cols = document.querySelectorAll('.col')
   const stars = document.querySelectorAll('.star')
   for (let i = 0; i < stars.length; i++) {
@@ -18,6 +20,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
   for (let i = 0; i < flashcards.length; i++) {
     flashcards[i].addEventListener('click', function () {
+      if (front[i].style.display != "none"){
+        front[i].style.display = "none"
+        back[i].classList.remove("hide")
+      }
+      else{
+        back[i].classList.add("hide")
+        front[i].style.display = "block"
+      }
       cols[i].classList.add('fade')
       setTimeout(function flip () {
         cols[i].classList.add('fade-in')

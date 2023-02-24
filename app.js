@@ -4,17 +4,19 @@ const hostname = '127.0.0.1'
 const fs = require('fs')
 const port = 8080
 const cors = require('cors')
-const path = require('path')
+
 app.use(cors())
-app.use(express.static(path.join(__dirname, 'client')))
-app.use(express.json())
 
 const fileNameForFlashcards =  './flashcards.json'
+app.use(express.json())
+const path = require('path')
+app.use(express.static(path.join(__dirname, 'client')))
+
 const flashcards = require(fileNameForFlashcards)
 
 app.get('/flashcards',function(req,resp){
-    const flashcardKeys = Object.keys(flashcards)
-    resp.send(flashcardKeys)
+    // const flashcardKeys = Object.keys(flashcards)
+    resp.send(flashcards)
 })
 
 const fileNameForReviews =  './reviews.json'

@@ -5,6 +5,7 @@
             "flashcard_id":2,
             "reviewer_name": "Charles",
             "review_date": "21/02/2023",
+            "review_title" :"help me",
             "rating": "1/5",
             "comment": "Awful flashcard that makes me wants to cry just reading it, going throught it was painful, please remove this flashcard from this plane of existence"
         },
@@ -12,6 +13,7 @@
             "id":2,
             "flashcard_id":3,
             "reviewer_name":"Michal",
+            "review_title" :"dissappointed",
             "review_date": "22/02/2023",
             "rating": "2/5",
             "comment":"dreadful"

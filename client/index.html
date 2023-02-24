@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <title>Flashcardlet</title>
+
+    <title>Cardlet</title>
     <!--Bootstrap(2022) see README for details-->
     <!-- Latest compiled and minified CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -31,18 +31,20 @@
             <a class="nav-link active" aria-current="page" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#subject1">Make a flashcard</a>
+            <a class="nav-link active" href="#make-flashcard">Make a flashcard</a>
           </li>
-
+          <li class="nav-item">
+            <a class="nav-link active" href="#subject2">Edit a flashcard</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
-     <select class="form-select" aria-label="Default select example">
+     <select id="select-subject" class="form-select" aria-label="Default select example">
       <option selected>Please select subject</option>
-      <option value="1">Subject 1</option>
-      <option value="2">Subject 2</option>
-      <option value="3">Subject 3</option>
+      <option value="1">Physics</option>
+      <option value="2">Maths</option>
+      <option value="3">History</option>
     </select>
      <button id = "right-arrow" type="button" class="btn btn-primary">
         &#x2192;
@@ -55,52 +57,61 @@
         
         <div class="row"  id = "no-gutters">
           <div class="col">
-            <textarea class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
+            <textarea class="form-control flashcard-front-text" aria-label="With textarea" placeholder="Write the content of your review here">1 Columns</textarea>
+            <textarea class="form-control flashcard-back-text hide" aria-label="With textarea" placeholder="Write the content of your review here">9 Columns</textarea>
             <span class = "flashcards" >See other side of flashcard</span>
             <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
           </div>
           <div class="col">
-            <textarea class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
+            <textarea class="form-control flashcard-front-text" aria-label="With textarea" placeholder="Write the content of your review here">2 Columns</textarea>
+            <textarea class="form-control flashcard-back-text hide" aria-label="With textarea" placeholder="Write the content of your review here">9 Columns</textarea>
             <span class = "flashcards" >See other side of flashcard</span>
             <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
           </div>
           <div class="col">
-            <textarea readonly class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
-            <span class = "flashcards" >See other side of flashcard</span>
-            <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
-          </div>
-        </div>
-        <div class="row"  id = "no-gutters">
-          <div class="col">
-            <textarea class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
-            <span class = "flashcards" >See other side of flashcard</span>
-            <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
-          </div>
-          <div class="col">
-            <textarea class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
-            <span class = "flashcards" >See other side of flashcard</span>
-            <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
-          </div>
-          <div class="col">
-            <textarea class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
+            <textarea readonly class="form-control flashcard-front-text" aria-label="With textarea" placeholder="Write the content of your review here">3 Columns</textarea>
+            <textarea class="form-control flashcard-back-text hide" aria-label="With textarea" placeholder="Write the content of your review here">9 Columns</textarea>
             <span class = "flashcards" >See other side of flashcard</span>
             <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
           </div>
         </div>
         <div class="row"  id = "no-gutters">
           <div class="col">
-            <textarea class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
+            <textarea class="form-control flashcard-front-text" aria-label="With textarea" placeholder="Write the content of your review here">4 Columns</textarea>
+            <textarea class="form-control flashcard-back-text hide" aria-label="With textarea" placeholder="Write the content of your review here">9 Columns</textarea>
             <span class = "flashcards" >See other side of flashcard</span>
             <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
           </div>
           <div class="col">
-            <textarea class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
+            <textarea class="form-control flashcard-front-text" aria-label="With textarea" placeholder="Write the content of your review here">5 Columns</textarea>
+            <textarea class="form-control flashcard-back-text hide" aria-label="With textarea" placeholder="Write the content of your review here">9 Columns</textarea>
             <span class = "flashcards" >See other side of flashcard</span>
             <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
           </div>
           <div class="col">
-            <textarea class="form-control flashcard-text" aria-label="With textarea" placeholder="Write the content of your review here">Columns</textarea>
+            <textarea class="form-control flashcard-front-text" aria-label="With textarea" placeholder="Write the content of your review here">6 Columns</textarea>
+            <textarea class="form-control flashcard-back-text hide" aria-label="With textarea" placeholder="Write the content of your review here">9 Columns</textarea>
             <span class = "flashcards" >See other side of flashcard</span>
+            <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
+          </div>
+        </div>
+        <div class="row"  id = "no-gutters">
+          <div class="col">
+            <textarea class="form-control flashcard-front-text" aria-label="With textarea" placeholder="Write the content of your review here">7 Columns</textarea>
+            <textarea class="form-control flashcard-back-text hide" aria-label="With textarea" placeholder="Write the content of your review here">9 Columns</textarea>
+            <span class = "flashcards" >See other side of flashcard</span>
+            <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
+          </div>
+          <div class="col">
+            <textarea class="form-control flashcard-front-text" aria-label="With textarea" placeholder="Write the content of your review here">8 Columns</textarea>
+            <textarea class="form-control flashcard-back-text hide" aria-label="With textarea" placeholder="Write the content of your review here">9 Columns</textarea>
+            <span class = "flashcards" >See other side of flashcard</span>
+            <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
+          </div>
+          <div  class="col">
+            <textarea class="form-control flashcard-front-text" aria-label="With textarea" placeholder="Write the content of your review here">9 Columns</textarea>
+            <textarea class="form-control flashcard-back-text hide" aria-label="With textarea" placeholder="Write the content of your review here">9 Columns</textarea>
+            <span id ="make-flashcard" class = "flashcards" >See other side of flashcard</span>
             <span class = "see-reviews" data-bs-toggle="modal" data-bs-target="#staticBackdrop">see reviews</span>
           </div>
         </div>
@@ -168,12 +179,34 @@
         <label for="exampleInputPassword1">Back of Flashcard</label>
         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter back of flashcard here">
       </div>
-      <div id = "subject1"class="form-group">
+      <div class="form-group">
         <label for="subject">Subject</label>
         <input type="text" class = "form-control" placeholder="Enter subject of flashcard">
       </div>
       <button type="submit" class="btn btn-primary">Make flashcard</button>
     </form>
     
+    <h2 id = "add-flashcard">Edit a Flashcard</h2>
+    <form id = "flashcard_form">
+      <button type="button" class="btn btn-light">Please select a flahscard</button>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Front of Flashcard</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Front of flashcard will show once you select a flashcard for you to edit">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Back of Flashcard</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Back of flashcard will show once you select a flashcard for you to edit">
+      </div>
+      <div id = "subject2"class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" class = "form-control" placeholder="Subject of flashcard will show once you select a flashcard for you to edit">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit edits</button>
+    </form>
+
+    <script src="script.js"></script>
+    <script src="flashcard.js"></script>
+
+
 </body>
 </html>
