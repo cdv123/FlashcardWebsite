@@ -2,7 +2,7 @@
     "flashcards":[
         {
             "id":1,
-            "subject": "Math",
+            "subject": "Maths",
             "date_of_creation":"21/02/2023",
             "front": "What is the integral of cosx",
             "back": "sinx"

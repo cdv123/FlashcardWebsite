@@ -27,4 +27,12 @@ app.get('/reviews',function(req,resp){
     resp.send(reviews)
 })
 
+app.post('/flashcards/add', function(req,resp){
+
+})
+
+app.post('/reviews/add', function(req,resp){
+    
+})
+
 module.exports = app
