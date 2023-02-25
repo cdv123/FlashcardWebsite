@@ -19,7 +19,14 @@ async function showFlashcards(subjectToShow, startPoint){
         startPoint = flashcardArray.length+startPoint
     }
     let counter2 = 0
-    for (let i =startPoint; i<flashcardArray.length;i++){
+    console.log(reviews)
+    console.log(startPoint)
+    let max = 9
+    if (flashcardArray.length<9){
+        max = flashcardArray.length
+    }
+    for (let i =startPoint; i<max;i++){
+        console.log(reviews[i])
         reviews[i].addEventListener("click", function(){
             showReviews(flashcardArray[i].id)
         })
@@ -61,8 +68,50 @@ async function showReviews(flashcardID){
     }
 }
 
+async function showSubjects(){
+    const flashcardsResponse = await fetch(endpointRoot + 'flashcards');
+    const flashcardKeysText = await flashcardsResponse.text();
+    const flashcardKeys = JSON.parse(flashcardKeysText)
+    const chooseSubject = document.getElementById("select-subject")
+    flashcardArray = flashcardKeys.flashcards
+    let subjects = []
+    for (let i = 0; i<flashcardArray.length; i++){
+        if (!subjects.includes(flashcardArray[i].subject)){
+            subjects.push(flashcardArray[i].subject)
+        }
+    }
+    chooseSubject.innerHTML = `<option selected>Please select subject</option>`
+    for (let i = 0; i<subjects.length; i++){
+        chooseSubject.innerHTML+= `<option value="${i+1}">${subjects[i]}</option>`
+    }
+}
+
 async function postFlashcards(){
-    
+    const flashcardForm = document.getElementById("flashcard_form")
+    flashcardForm.addEventListener("submit",async function(event ){
+        event.preventDefault();
+        const data = new FormData(flashcardForm)
+        const json = JSON.stringify(Object.fromEntries(data))
+        const response = await fetch(endpointRoot + 'flashcards/add',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+            body: json
+        })
+        const selectSubject2 = document.getElementById("select-subject")
+        value = selectSubject2.options[selectSubject2.selectedIndex].text
+        counter = 0
+        if (value == "Please select subject"){
+            showFlashcards(0,"")
+        }
+        else{
+            showFlashcards(0,value)
+        }
+        showSubjects()
+        flashcardForm.reset()
+    })  
 }
 
 document.addEventListener('DOMContentLoaded',showFlashcards("", 0))
@@ -91,4 +140,6 @@ document.addEventListener('DOMContentLoaded', function(){
         counter-=9
         showFlashcards(value, counter)
     })
+    showSubjects()
+    postFlashcards()
 })

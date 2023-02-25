@@ -42,9 +42,9 @@
   </nav>
      <select id="select-subject" class="form-select" aria-label="Default select example">
       <option selected>Please select subject</option>
-      <option value="1">Physics</option>
+      <!-- <option value="1">Physics</option>
       <option value="2">Maths</option>
-      <option value="3">History</option>
+      <option value="3">History</option> -->
     </select>
      <button id = "right-arrow" type="button" class="btn btn-primary">
         &#x2192;
@@ -172,30 +172,30 @@
     <h2 id = "add-flashcard">Add a Flashcard</h2>
     <form id = "flashcard_form">
       <div class="form-group">
-        <label for="exampleInputEmail1">Front of Flashcard</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter front of flashcard here">
+        <label for="front-flashcard">Front of Flashcard</label>
+        <input name = "front" class="form-control" id="front-flashcard" aria-describedby="emailHelp" placeholder="Enter front of flashcard here">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Back of Flashcard</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter back of flashcard here">
+        <label for="back-flashcard">Back of Flashcard</label>
+        <input name = "back" class="form-control" id="back-flashcard" placeholder="Enter back of flashcard here">
       </div>
       <div class="form-group">
         <label for="subject">Subject</label>
-        <input type="text" class = "form-control" placeholder="Enter subject of flashcard">
+        <input name = "subject" type="text" class = "form-control" placeholder="Enter subject of flashcard">
       </div>
       <button type="submit" class="btn btn-primary">Make flashcard</button>
     </form>
     
     <h2 id = "add-flashcard">Edit a Flashcard</h2>
-    <form id = "flashcard_form">
+    <form id = "flashcard_form2">
       <button type="button" class="btn btn-light">Please select a flahscard</button>
       <div class="form-group">
-        <label for="exampleInputEmail1">Front of Flashcard</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Front of flashcard will show once you select a flashcard for you to edit">
+        <label for="front-flashcard2">Front of Flashcard</label>
+        <input type="email" class="form-control" id="front-flashcard2" aria-describedby="emailHelp" placeholder="Front of flashcard will show once you select a flashcard for you to edit">
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Back of Flashcard</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Back of flashcard will show once you select a flashcard for you to edit">
+        <label for="back-flashcard2">Back of Flashcard</label>
+        <input type="password" class="form-control" id="back-flashcard2" placeholder="Back of flashcard will show once you select a flashcard for you to edit">
       </div>
       <div id = "subject2"class="form-group">
         <label for="subject">Subject</label>
