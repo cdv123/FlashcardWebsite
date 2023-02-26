@@ -47,6 +47,7 @@ async function showFlashcards(subjectToShow, startPoint){
     }
 }
 async function showReviews(flashcardID,update){
+    try{
     const reviewResponse = await fetch(endpointRoot + 'reviews')
     const reviewResponseText = await reviewResponse.text();
     const reviewKeys = JSON.parse(reviewResponseText)
@@ -68,11 +69,15 @@ async function showReviews(flashcardID,update){
     }
     if (update == true){
         postReviews(flashcardID)
+    }}
+    catch(err){
+        alert("connection to server lost")
     }
 
 }
 
 async function showSubjects(){
+    try{
     const flashcardsResponse = await fetch(endpointRoot + 'flashcards');
     const flashcardKeysText = await flashcardsResponse.text();
     const flashcardKeys = JSON.parse(flashcardKeysText)
@@ -87,6 +92,9 @@ async function showSubjects(){
     chooseSubject.innerHTML = `<option selected>Please select subject</option>`
     for (let i = 0; i<subjects.length; i++){
         chooseSubject.innerHTML+= `<option value="${i+1}">${subjects[i]}</option>`
+    }}
+    catch(err){
+        alert("connection to server lost")
     }
 }
 
@@ -96,6 +104,7 @@ async function postFlashcards(){
         event.preventDefault();
         const data = new FormData(flashcardForm)
         const json = JSON.stringify(Object.fromEntries(data))
+        try{
         const response = await fetch(endpointRoot + 'flashcards/add',
         {
             method: 'POST',
@@ -114,13 +123,17 @@ async function postFlashcards(){
             showFlashcards(value,0)
         }
         showSubjects()
-        flashcardForm.reset()
+        flashcardForm.reset()}
+        catch(err){
+            alert("conncetion to server lost")
+        }
     })  
 }
 
 async function postReviews(flashcardID){
     const reviewForm = document.getElementById("review")
     reviewForm.addEventListener("submit", async function(event){
+        try{
         event.preventDefault();
         const data = new FormData(reviewForm)
         const stars = document.querySelectorAll(".star")
@@ -146,8 +159,12 @@ async function postReviews(flashcardID){
               },
             body: json
         })
+        
         showReviews(flashcardID, false)
-        reviewForm.reset()
+        reviewForm.reset()}
+        catch(err){
+            alert("connection to server lost")
+        }
     })
 }
 
