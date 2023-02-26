@@ -41,7 +41,7 @@
     </div>
   </nav>
      <select id="select-subject" class="form-select" aria-label="Default select example">
-      <option selected>Please select subject</option>
+      <!-- <option selected>Please select subject</option> -->
       <!-- <option value="1">Physics</option>
       <option value="2">Maths</option>
       <option value="3">History</option> -->
@@ -129,41 +129,35 @@
               <h3 class = "review-titles"> Review Title - rating out of 5</h3>
               <p>Review content</p>
               <p>written by</p></div>
-            
             <h2 id = "add-review">Add a review</h2>
     <form id = "review">
       <div class="form-group">
-        <label for="exampleInputEmail1">Name</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Write your name here">
+        <label for="review-name">Name</label>
+        <input name = "name" class="form-control" id="review-name" aria-describedby="emailHelp" placeholder="Write your name here">
       </div>
       <div class="form-group">
-        <label for="exampleInputEmail1">Select the flashcard to review</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter flashcard ID here">
-      </div>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Review Title</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Write your review title here">
+        <label for="review-title">Review Title</label>
+        <input name = "title" class="form-control" id="review-title" aria-describedby="emailHelp" placeholder="Write your review title here">
       </div>
       <div class="form-group">
         <span class="form-group-text">Content</span>
-        <textarea class="form-control" aria-label="With textarea" placeholder="Write the content of your review here"></textarea>
+        <textarea name = "content" class="form-control" aria-label="With textarea" placeholder="Write the content of your review here"></textarea>
       </div>
       <div class="form-group">
         <label for="rating1">Rate this flashcard out of 5:</label>
         <div id="rating1" class="star-rating" role="rating" data-rating="3">
-          <span id = "star1"class="star" data-value="1">&#9733;<span class="star-notification"><span id = "tooltiptext1"class="tooltiptext">Terrible</span></span></span>
-          <span id = "star2"class="star" data-value="2">&#9733;<span class="star-notification"><span id = "tooltiptext2"class="tooltiptext">Bad</span></span></span>
-          <span id = "star3"class="star" data-value="3">&#9733;<span class="star-notification"><span id = "tooltiptext3"class="tooltiptext">Okay</span></span></span>
-          <span id = "star4"class="star" data-value="4">&#9733;<span class="star-notification"><span id = "tooltiptext4"class="tooltiptext">Good</span></span></span>
-          <span id = "star5"class="star"data-value="5">&#9733;<span class="star-notification"><span id = "tooltiptext5"class="tooltiptext">Excellent</span></span></span>
+          <span id = "star1" class="star" data-value="1">&#9733;<span class="star-notification"><span id = "tooltiptext1"class="tooltiptext">Terrible</span></span></span>
+          <span id = "star2" class="star" data-value="2">&#9733;<span class="star-notification"><span id = "tooltiptext2"class="tooltiptext">Bad</span></span></span>
+          <span id = "star3" class="star" data-value="3">&#9733;<span class="star-notification"><span id = "tooltiptext3"class="tooltiptext">Okay</span></span></span>
+          <span id = "star4" class="star" data-value="4">&#9733;<span class="star-notification"><span id = "tooltiptext4"class="tooltiptext">Good</span></span></span>
+          <span id = "star5" class="star" data-value="5">&#9733;<span class="star-notification"><span id = "tooltiptext5"class="tooltiptext">Excellent</span></span></span>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Submit Review</button>
+      <button type="submit" id = "submit-review" class="btn btn-primary">Submit Review</button>
     </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
           </div>
         </div>
       </div>
@@ -191,11 +185,11 @@
       <button type="button" class="btn btn-light">Please select a flahscard</button>
       <div class="form-group">
         <label for="front-flashcard2">Front of Flashcard</label>
-        <input type="email" class="form-control" id="front-flashcard2" aria-describedby="emailHelp" placeholder="Front of flashcard will show once you select a flashcard for you to edit">
+        <input class="form-control" id="front-flashcard2" aria-describedby="emailHelp" placeholder="Front of flashcard will show once you select a flashcard for you to edit">
       </div>
       <div class="form-group">
         <label for="back-flashcard2">Back of Flashcard</label>
-        <input type="password" class="form-control" id="back-flashcard2" placeholder="Back of flashcard will show once you select a flashcard for you to edit">
+        <input class="form-control" id="back-flashcard2" placeholder="Back of flashcard will show once you select a flashcard for you to edit">
       </div>
       <div id = "subject2"class="form-group">
         <label for="subject">Subject</label>

@@ -8,6 +8,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const back = document.querySelectorAll(".flashcard-back-text")
   const cols = document.querySelectorAll('.col')
   const stars = document.querySelectorAll('.star')
+  const submitReview = document.getElementById("submit-review")
   for (let i = 0; i < stars.length; i++) {
     stars[i].addEventListener('click', function () {
       for (let j = 0; j <= i; j++) {
@@ -47,4 +48,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     container.classList.add('fade-in')
     container.classList.remove('fade')
   }
+  submitReview.addEventListener('click', function(){
+    for (let i = 0; i < stars.length; i++) {
+      stars[i].classList.remove('yellow')
+    }
+  })
 })

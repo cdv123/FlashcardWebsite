@@ -15,20 +15,18 @@ async function showFlashcards(subjectToShow, startPoint){
             flashcardsBack[i].innerHTML = "Empty"
         }
     }
+    
     else if (startPoint<0){
         startPoint = flashcardArray.length+startPoint
     }
     let counter2 = 0
-    console.log(reviews)
-    console.log(startPoint)
     let max = 9
     if (flashcardArray.length<9){
         max = flashcardArray.length
     }
     for (let i =startPoint; i<max;i++){
-        console.log(reviews[i])
         reviews[i].addEventListener("click", function(){
-            showReviews(flashcardArray[i].id)
+            showReviews(flashcardArray[i].id,true)
         })
         if (subjectToShow == ""){
             counter2+=1
@@ -36,7 +34,6 @@ async function showFlashcards(subjectToShow, startPoint){
             flashcardsBack[j].innerHTML = flashcardArray[i].back
             j++
         }
-
         else if (flashcardArray[i].subject == subjectToShow){
             counter2+=1
             flashcardsFront[j].innerHTML = flashcardArray[i].front
@@ -49,7 +46,7 @@ async function showFlashcards(subjectToShow, startPoint){
         flashcardsBack[i].innerHTML = "Empty"
     }
 }
-async function showReviews(flashcardID){
+async function showReviews(flashcardID,update){
     const reviewResponse = await fetch(endpointRoot + 'reviews')
     const reviewResponseText = await reviewResponse.text();
     const reviewKeys = JSON.parse(reviewResponseText)
@@ -66,6 +63,13 @@ async function showReviews(flashcardID){
     if (c==1){
         review.innerHTML = reviewList
     }
+    else if (c==0){
+        review.innerHTML = "Empty"
+    }
+    if (update == true){
+        postReviews()
+    }
+
 }
 
 async function showSubjects(){
@@ -88,7 +92,7 @@ async function showSubjects(){
 
 async function postFlashcards(){
     const flashcardForm = document.getElementById("flashcard_form")
-    flashcardForm.addEventListener("submit",async function(event ){
+    flashcardForm.addEventListener("submit",async function(event){
         event.preventDefault();
         const data = new FormData(flashcardForm)
         const json = JSON.stringify(Object.fromEntries(data))
@@ -104,14 +108,42 @@ async function postFlashcards(){
         value = selectSubject2.options[selectSubject2.selectedIndex].text
         counter = 0
         if (value == "Please select subject"){
-            showFlashcards(0,"")
+            showFlashcards("",0)
         }
         else{
-            showFlashcards(0,value)
+            showFlashcards(value,0)
         }
         showSubjects()
         flashcardForm.reset()
     })  
+}
+
+async function postReviews(flashcardID){
+    const reviewForm = document.getElementById("review")
+    reviewForm.addEventListener("submit", async function(event){
+        event.preventDefault();
+        const data = new FormData(reviewForm)
+        const stars = document.querySelectorAll(".star")
+        const rating = 1
+        for (let i = stars.length-1; i >= 0; i--){
+            if (stars[i].style.color == "yellow"){
+                rating = i+1
+                break
+            }
+        }
+        data.append("flashcard_id", flashcardID)
+        data.append("rating",rating)
+        const json = JSON.stringify(Object.fromEntries(data))
+        const reponse = await fetch(endpointRoot + 'reviews/add',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+            body: json
+        })
+        showReviews(flashcardID, false)
+        reviewForm.reset()
+    })
 }
 
 document.addEventListener('DOMContentLoaded',showFlashcards("", 0))

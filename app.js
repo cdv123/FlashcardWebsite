@@ -20,11 +20,11 @@ app.get('/flashcards',function(req,resp){
 })
 
 const fileNameForReviews =  './reviews.json'
-const reviews = require(fileNameForReviews)
+const db2 = require(fileNameForReviews)
 
 app.get('/reviews',function(req,resp){
-    const reviewKeys = reviews
-    resp.send(reviews)
+    const reviewKeys = db2
+    resp.send(db2)
 })
 
 app.post('/flashcards/add', function(req,resp){
@@ -39,7 +39,16 @@ app.post('/flashcards/add', function(req,resp){
 })
 
 app.post('/reviews/add', function(req,resp){
-
+    let newReview = {}
+    newReview.id = db2.reviews[db2.reviews.length-1].id+1
+    newReview.review_title = req.body.title;
+    newReview.reviewer_name = req.body.name;
+    newReview.comment = req.body.content;
+    newReview.rating = req.body.rating;
+    newReview.flashcard_id = req.body.flashcard_id;
+    db2.reviews.push(newReview)
+    fs.writeFileSync(fileNameForReviews, JSON.stringify(db2));
+    resp.send(db2);
 })
 
 module.exports = app
