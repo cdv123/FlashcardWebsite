@@ -67,7 +67,7 @@ async function showReviews(flashcardID,update){
         review.innerHTML = "Empty"
     }
     if (update == true){
-        postReviews()
+        postReviews(flashcardID)
     }
 
 }
@@ -124,15 +124,20 @@ async function postReviews(flashcardID){
         event.preventDefault();
         const data = new FormData(reviewForm)
         const stars = document.querySelectorAll(".star")
-        const rating = 1
+        let rating = 1
         for (let i = stars.length-1; i >= 0; i--){
-            if (stars[i].style.color == "yellow"){
+            if (stars[i].classList.contains("yellow")){
                 rating = i+1
                 break
             }
         }
+        const day = new Date();
+        const date = day.getDate().toString() + "/" + day.getMonth().toString()+ "/" + day.getFullYear().toString() + " " + day.getHours().toString() + ":" + day.getMinutes().toString()
+        rating = rating.toString()
+        rating = `${rating}/5`
         data.append("flashcard_id", flashcardID)
         data.append("rating",rating)
+        data.append("date_of_creation", date)
         const json = JSON.stringify(Object.fromEntries(data))
         const reponse = await fetch(endpointRoot + 'reviews/add',{
             method: 'POST',

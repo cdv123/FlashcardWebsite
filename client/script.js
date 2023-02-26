@@ -48,9 +48,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
     container.classList.add('fade-in')
     container.classList.remove('fade')
   }
-  submitReview.addEventListener('click', function(){
+
+  function removeColours(){
     for (let i = 0; i < stars.length; i++) {
       stars[i].classList.remove('yellow')
     }
+  }
+  submitReview.addEventListener('click', function(){
+    setTimeout(removeColours,100)
   })
 })

@@ -46,6 +46,7 @@ app.post('/reviews/add', function(req,resp){
     newReview.comment = req.body.content;
     newReview.rating = req.body.rating;
     newReview.flashcard_id = req.body.flashcard_id;
+    newReview.date_of_creation = req.body.date_of_creation;
     db2.reviews.push(newReview)
     fs.writeFileSync(fileNameForReviews, JSON.stringify(db2));
     resp.send(db2);
