@@ -15,7 +15,6 @@ async function showFlashcards(subjectToShow, startPoint){
             flashcardsBack[i].innerHTML = "Empty"
         }
     }
-    
     else if (startPoint<0){
         startPoint = flashcardArray.length+startPoint
     }
@@ -41,10 +40,62 @@ async function showFlashcards(subjectToShow, startPoint){
             j++
         }
     }
-    for (let i =counter2; i<flashcardsFront.length;i++){
+    for (let i = counter2; i<flashcardsFront.length;i++){
         flashcardsFront[i].innerHTML = "Empty"
         flashcardsBack[i].innerHTML = "Empty"
     }
+}
+async function showAllFlashcards(sortBy){
+    // try{
+        const flashcardResponse = await fetch(endpointRoot+'flashcards');
+        const flashcardKeysText = await flashcardResponse.text();
+        const flashcardKeys = JSON.parse(flashcardKeysText)
+        flashcardArray = flashcardKeys.flashcards
+        function compareAttribute(attr){
+            return function(a,b) {
+                return a[attr] - b[attr]? -1: a[attr]>b[attr] ? 1:0;
+              }
+        }
+        function compareSubject(a,b){
+            if ( a.subject < b.subject ){
+                return -1;
+              }
+              if ( a.subject > b.subject ){
+                return 1;
+              }
+              return 0;
+        }
+        console.log(flashcardArray)
+        flashcardArray = flashcardArray.sort(compareSubject)
+        console.log(flashcardArray)
+        // if (sortBy != 'Sort by:'){
+        //     comparison = compareAttribute(sortBy);
+        //     flashcardArray.sort(comparison)
+        // }
+        const container = document.getElementById("all-flashcards")
+        const editFront = document.getElementById("front-flashcard2")
+        const editBack = document.getElementById("back-flashcard2")
+        const editSubject = document.getElementById("subject4")
+        let listToAdd = ""
+        for (let i =0; i<flashcardArray.length;i++){
+            listToAdd+= `<div class = "every-flashcard" data-bs-dismiss="modal"> <p> Front of card: ${flashcardArray[i].front}</p> <p> Back of card: ${flashcardArray[i].back}</p> <p> Subject of card: ${flashcardArray[i].subject}</p> <p> Date of creation: ${flashcardArray[i].date_of_creation}</p></div>`
+        }
+        container.innerHTML = listToAdd
+        everyFlashcard = document.querySelectorAll(".every-flashcard")
+        for (let i = 0; i<everyFlashcard.length; i++){
+            everyFlashcard[i].addEventListener("click", function(){
+                editFront.value = flashcardArray[i].front
+                editBack.value = flashcardArray[i].back
+                editSubject.value = flashcardArray[i].subject
+                postEdits(flashcardArray[i].id)
+            })
+        }
+        
+
+    // }
+    // catch(err){
+    //     alert("connection to server lost")
+    // }
 }
 async function showReviews(flashcardID,update){
     try{
@@ -98,11 +149,40 @@ async function showSubjects(){
     }
 }
 
+async function postEdits(flashcardID){
+    const editFlashcardForm = document.getElementById("flashcard_form2")
+    editFlashcardForm.addEventListener("submit", async function(event){
+        event.preventDefault()
+        const data = new FormData(editFlashcardForm)
+        data.append("id", flashcardID)
+        const json = JSON.stringify(Object.fromEntries(data))
+        // try{
+        const response = await fetch(endpointRoot + 'flashcards/update',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+              },
+            body: json
+        })
+        showSubjects()
+        showFlashcards("",0)
+        editFlashcardForm.reset()
+        
+        // }
+        // catch{
+
+        // }
+    })
+}
+
 async function postFlashcards(){
     const flashcardForm = document.getElementById("flashcard_form")
     flashcardForm.addEventListener("submit",async function(event){
         event.preventDefault();
         const data = new FormData(flashcardForm)
+        const day = new Date();
+        const date = day.getDate().toString() + "/" + day.getMonth().toString()+ "/" + day.getFullYear().toString() + " " + day.getHours().toString() + ":" + day.getMinutes().toString()
+        data.append("date_of_creation", day)
         const json = JSON.stringify(Object.fromEntries(data))
         try{
         const response = await fetch(endpointRoot + 'flashcards/add',
@@ -194,6 +274,28 @@ document.addEventListener('DOMContentLoaded', function(){
         counter-=9
         showFlashcards(value, counter)
     })
+    editFlashcard = document.getElementById("edit-flashcard")
+    editFlashcard.addEventListener("click", function(){
+        showAllFlashcards('Sort By:');
+    })
+    const sortBy = document.getElementById("sort-by")
+    sortBy.addEventListener("change",function(){
+        value = selectSubject.options[selectSubject.selectedIndex].text
+        if (value == 'Date of creation'){
+            value = date_of_creation
+        }
+        else if (value == 'Subject (alphabetical order)'){
+            value = subject
+        }
+        else if (value == 'Front (alphabetical order)'){
+            value = front
+        }
+        else if (value == 'Back (alphabetical order)'){
+            value = front
+        }
+        showAllFlashcards(value)
+    })
     showSubjects()
     postFlashcards()
+
 })

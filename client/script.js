@@ -57,4 +57,35 @@ window.addEventListener('DOMContentLoaded', (event) => {
   submitReview.addEventListener('click', function(){
     setTimeout(removeColours,100)
   })
+  wrapper = document.querySelectorAll(".wrapper")
+  window.addEventListener("resize", function(){
+    if (window.innerWidth < 780){
+      for (let i =0; i<wrapper.length; i++){
+        if (wrapper[i].classList.contains("row")){
+          wrapper[i].classList.remove("row")
+          wrapper[i].classList.remove("no-gutters")
+        }
+      }
+      for (let i =0; i<cols.length; i++){
+        if (!cols[i].classList.contains("row")){
+          cols[i].classList.add("row")
+          cols[i].classList.add("no-gutters")
+        }
+      }
+    }
+    else{
+      for (let i =0; i<wrapper.length; i++){
+        if (!wrapper[i].classList.contains("row")){
+          wrapper[i].classList.add("row")
+          wrapper[i].classList.add("no-gutters")
+        }
+      }
+      for (let i =0; i<cols.length; i++){
+        if (cols[i].classList.contains("row")){
+          cols[i].classList.remove("row")
+          cols[i].classList.remove("no-gutters")
+        }
+      }
+    }
+  })
 })

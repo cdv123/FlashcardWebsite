@@ -33,7 +33,23 @@ app.post('/flashcards/add', function(req,resp){
     newFlashcard.subject = req.body.subject;
     newFlashcard.front = req.body.front;
     newFlashcard.back = req.body.back
+    newFlashcard.date_of_creation = req.body.date_of_creation
     db.flashcards.push(newFlashcard)
+    fs.writeFileSync(fileNameForFlashcards, JSON.stringify(db));
+    resp.send(db);
+})
+
+app.post('/flashcards/update', function(req,resp){
+    index = 0
+    for (let i = 0; i<db.flashcards.length; i++){
+        if (db.flashcards[i].id == req.body.id){
+            index = i
+        }
+    }
+    db.flashcards[index].front = req.body.front
+    db.flashcards[index].back = req.body.back
+    db.flashcards[index].subject = req.body.subject
+    db.flashcards[index].date_of_creation = req.body.date_of_creation 
     fs.writeFileSync(fileNameForFlashcards, JSON.stringify(db));
     resp.send(db);
 })
