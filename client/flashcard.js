@@ -53,25 +53,23 @@ async function showAllFlashcards(sortBy){
         flashcardArray = flashcardKeys.flashcards
         function compareAttribute(attr){
             return function(a,b) {
-                return a[attr] - b[attr]? -1: a[attr]>b[attr] ? 1:0;
+                if (a[attr].toUpperCase() < b[attr].toUpperCase()) {
+                    return -1;
+                  }
+                  if (a[attr].toUpperCase() > b[attr].toUpperCase()) {
+                    return 1;
+                  }
+                  return 0;;
               }
         }
-        function compareSubject(a,b){
-            if ( a.subject < b.subject ){
-                return -1;
-              }
-              if ( a.subject > b.subject ){
-                return 1;
-              }
-              return 0;
+        console.log(sortBy)
+        if (sortBy == "date_of_creation"){
+            flashcardArray.sort(function(a,b){return new Date(b.date_of_creation) - new Date(a.date_of_creation)})
         }
-        console.log(flashcardArray)
-        flashcardArray = flashcardArray.sort(compareSubject)
-        console.log(flashcardArray)
-        // if (sortBy != 'Sort by:'){
-        //     comparison = compareAttribute(sortBy);
-        //     flashcardArray.sort(comparison)
-        // }
+        else if (sortBy != 'Sort by:'){
+            comparison = compareAttribute(sortBy);
+            flashcardArray.sort(comparison)
+        }
         const container = document.getElementById("all-flashcards")
         const editFront = document.getElementById("front-flashcard2")
         const editBack = document.getElementById("back-flashcard2")
@@ -276,22 +274,22 @@ document.addEventListener('DOMContentLoaded', function(){
     })
     editFlashcard = document.getElementById("edit-flashcard")
     editFlashcard.addEventListener("click", function(){
-        showAllFlashcards('Sort By:');
+        showAllFlashcards('Sort by:');
     })
     const sortBy = document.getElementById("sort-by")
     sortBy.addEventListener("change",function(){
-        value = selectSubject.options[selectSubject.selectedIndex].text
+        value = sortBy.options[sortBy.selectedIndex].text
         if (value == 'Date of creation'){
-            value = date_of_creation
+            value = 'date_of_creation'
         }
         else if (value == 'Subject (alphabetical order)'){
-            value = subject
+            value = 'subject'
         }
         else if (value == 'Front (alphabetical order)'){
-            value = front
+            value = 'front'
         }
         else if (value == 'Back (alphabetical order)'){
-            value = front
+            value = 'back'
         }
         showAllFlashcards(value)
     })
