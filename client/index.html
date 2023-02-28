@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-
+    <link rel="shortcut icon" type="image/png" href="/images/flashcards.jpg">
     <title>Cardlet</title>
     <!--Bootstrap(2022) see README for details-->
     <!-- Latest compiled and minified CSS -->
@@ -17,7 +17,7 @@
   <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
       <a class="navbar-brand" id = "title" href="#">Cardlet
         <small>Work smarter, not harder</small>
@@ -46,10 +46,10 @@
       <option value="2">Maths</option>
       <option value="3">History</option> -->
     </select>
-     <button id = "right-arrow" type="button" class="btn btn-primary">
+     <button id = "right-arrow" type="button" class="btn">
         &#x2192;
     </button>
-    <button id = "left-arrow" type="button" class="btn btn-primary">
+    <button id = "left-arrow" type="button" class="btn">
         &#x2190;
     </button>   
     
@@ -153,11 +153,11 @@
           <span id = "star5" class="star" data-value="5">&#9733;<span class="star-notification"><span id = "tooltiptext5" class="tooltiptext">Excellent</span></span></span>
         </div>
       </div>
-      <button type="submit" id = "submit-review" class="btn btn-primary">Submit Review</button>
+      <button type="submit" id = "submit-review" class="btn">Submit Review</button>
     </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -177,12 +177,12 @@
         <label for="subject3">Subject</label>
         <input id = "subject3" name = "subject" type="text" class = "form-control" placeholder="Enter subject of flashcard">
       </div>
-      <button type="submit" class="btn btn-primary">Make flashcard</button>
+      <button type="submit" id = "make-button" class="btn">Make flashcard</button>
     </form>
     
     <h2 id = "add-flashcard2">Edit a Flashcard</h2>
     <form id = "flashcard_form2">
-      <button type="button" id ="edit-flashcard" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Click to select a flashcard</button>
+      <button type="button" id ="edit-flashcard" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop2">Click to select a flashcard</button>
       <div class="form-group">
         <label for="front-flashcard2">Front of Flashcard</label>
         <input name = "front" class="form-control" id="front-flashcard2" placeholder="Front of flashcard will show once you select a flashcard for you to edit">
@@ -195,7 +195,7 @@
         <label for="subject4">Subject</label>
         <input name = "subject" id = "subject4" type="text" class = "form-control" placeholder="Subject of flashcard will show once you select a flashcard for you to edit">
       </div>
-      <button type="submit" class="btn btn-primary">Submit edits</button>
+      <button type="submit" id = "submit-button" class="btn">Submit edits</button>
     </form>
     <div class="modal" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
       <div class="modal-dialog modal-dialog-scrollable">
@@ -215,7 +215,7 @@
             <div id = "all-flashcards"></div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
