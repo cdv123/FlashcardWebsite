@@ -1,7 +1,9 @@
-module.exports = {
+module.exports = {  
+    // pageExtensions: ['app.test.js'],
     env: {
       commonjs: true,
-      es2021: true
+      es2021: true,
+      jest:true
     },
     extends: 'standard',
     overrides: [

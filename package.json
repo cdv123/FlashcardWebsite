@@ -2,7 +2,7 @@
   "name": "summativeassignment2serverside",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "script.js",
   "scripts": {
     "pretest": "eslint server.js app.js client/script.js",
     "test": "jest",
