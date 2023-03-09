@@ -53,6 +53,10 @@ nav{
     transition-duration: 0.2s;
     opacity: 0;
 }
+.average-rating{
+    font-size: 20px;
+    margin-bottom: 3%;
+}
 .flashcard-front-text{
     resize: none;
     background-color: #E9EDC9 !important;
@@ -229,6 +233,14 @@ nav{
     border-radius: 10px;
     margin-bottom: 3%;
     cursor: pointer;
+}
+#search-flashcard{
+    background-color: #E9EDC9 !important;
+}
+#search-button{
+    margin-left: 80%;
+    margin-top: 2%;
+    margin-bottom: 3%;
 }
 #submit-button{
     margin-top: 1.5%;

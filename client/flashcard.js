@@ -95,31 +95,37 @@ async function showAllFlashcards (sortBy) {
     // }
 }
 async function showReviews (flashcardID, update) {
-    try {
-    const reviewResponse = await fetch(endpointRoot + 'reviews');
+    const reviewResponse = await fetch(`http://127.0.0.1:8080/reviews/${flashcardID}`);
     const reviewResponseText = await reviewResponse.text();
-    const reviewKeys = JSON.parse(reviewResponseText);
+    const selectedReviews = JSON.parse(reviewResponseText);
+    const reviewRatingResponse = await fetch(`http://127.0.0.1:8080/reviews/${flashcardID}/rating`);
+    const reviewRatingResponseText = await reviewRatingResponse.text();
+    const selectedRatings = JSON.parse(reviewRatingResponseText);
     const review = document.querySelector('.list-of-reviews');
-    const reviewArray = reviewKeys.reviews;
+    let averageRating = 0
     let reviewList = '';
-    let c = 0;
-    for (let i = 0; i < reviewArray.length; i++) {
-        if (reviewArray[i].flashcard_id === flashcardID) {
-            c = 1;
-            reviewList += `<h3 class = "review-titles"> ${reviewArray[i].review_title} - ${reviewArray[i].rating}</h3><p>${reviewArray[i].comment}</p><p>Written by ${reviewArray[i].reviewer_name}</p>`;
+    console.log(selectedRatings)
+    if (selectedRatings.length > 0){
+        for (let i = 0; i< selectedRatings.length; i++){
+            averageRating+= parseInt(selectedRatings[i].charAt(0))
         }
+        averageRating /= selectedRatings.length
+        averageRating = Math.round(averageRating * 100) / 100
+        reviewList += `<h3 class = "average-rating" > The average rating for this flashcard is ${averageRating}/5`
     }
-    if (c === 1) {
+
+    for (let i = 0; i < selectedReviews.length; i++) {
+        reviewList += `<h3 class = "review-titles"> ${selectedReviews[i].review_title} - ${selectedReviews[i].rating}</h3><p>${selectedReviews[i].comment}</p><p>Written by ${selectedReviews[i].reviewer_name}</p>`;
+    }
+    if (selectedReviews.length > 0) {
         review.innerHTML = reviewList;
-    } else if (c === 0) {
+    } else {
         review.innerHTML = 'Empty';
     }
     if (update === true) {
         postReviews(flashcardID);
     }
-} catch (err) {
-        alert('connection to server lost');
-    }
+
 }
 
 async function showSubjects () {
@@ -134,6 +140,15 @@ async function showSubjects () {
     }
 } 
 
+async function searchFlashcards(){
+    const searchForm = document.getElementById('search-form')
+    searchForm.addEventListener('submit', async function(event){
+        event.preventDefault();
+        const data = new FormData(searchForm)
+        const json = JSON.stringify(Object.fromEntries(data))
+        // const response = await fetch()
+    })
+}
 
 async function postEdits (flashcardID) {
     const editFlashcardForm = document.getElementById('flashcard_form2');

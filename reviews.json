@@ -1,1 +1,37 @@
-{"reviews":[{"id":1,"flashcard_id":2,"reviewer_name":"Charles","review_date":"21/02/2023 18:20","review_title":"help me","rating":"1/5","comment":"Awful flashcard that makes me wants to cry just reading it, going throught it was painful, please remove this flashcard from this plane of existence"},{"id":2,"flashcard_id":2,"reviewer_name":"Michal","review_title":"dissappointed","review_date":"22/02/2023 12:10","rating":"2/5","comment":"dreadful"},{"id":3,"review_title":"a","reviewer_name":"f\\sdfs\\","comment":"fdaffa","rating":"5/5","flashcard_id":"2","date_of_creation":"26/1/2023 21:10"},{"id":4,"review_title":"Review ","reviewer_name":"Ada","comment":"Rudementary definition. ","rating":"3/5","flashcard_id":"6","date_of_creation":"27/1/2023 14:3"}]}
+{
+    "reviews": [
+        {
+            "id": 1,
+            "flashcard_id": "2",
+            "reviewer_name": "Charles",
+            "review_date": "21/02/2023 18:20",
+            "review_title": "help me",
+            "rating": "1/5",
+            "comment": "Awful flashcard that makes me wants to cry just reading it, going throught it was painful, please remove this flashcard from this plane of existence"
+        }, {
+            "id": 2,
+            "flashcard_id": "2",
+            "reviewer_name": "Michal",
+            "review_title": "dissappointed",
+            "review_date": "22/02/2023 12:10",
+            "rating": "2/5",
+            "comment": "dreadful"
+        }, {
+            "id": 3,
+            "review_title": "a",
+            "reviewer_name": "f\\sdfs\\",
+            "comment": "fdaffa",
+            "rating": "5/5",
+            "flashcard_id": "2",
+            "date_of_creation": "26/1/2023 21:10"
+        }, {
+            "id": 4,
+            "review_title": "Review ",
+            "reviewer_name": "Ada",
+            "comment": "Rudementary definition. ",
+            "rating": "3/5",
+            "flashcard_id": "6",
+            "date_of_creation": "27/1/2023 14:3"
+        }
+    ]
+}

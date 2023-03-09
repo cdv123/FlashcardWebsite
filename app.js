@@ -25,17 +25,22 @@ app.get('/flashcards/subject', function (req,resp){
 const fileNameForReviews = './reviews.json';
 const dbReviews = require(fileNameForReviews);
 
-app.get('/reviews', function (req, resp) {
-    resp.send(dbReviews);
-});
-
-app.get('reviews/:flashcard_id/rating', function (req,resp){
+app.get('/reviews/:flashcard_id', function (req, resp) {
     const flashcardId = req.params.flashcard_id
     const selectedReviews = dbReviews.reviews.filter(obj => {
         return obj.flashcard_id === flashcardId
         }
     )
-    const selectedRatings = selectedReviews.map(a => a.ratings)
+    resp.send(selectedReviews);
+});
+
+app.get('/reviews/:flashcard_id/rating', function (req,resp){
+    const flashcardId = req.params.flashcard_id
+    const selectedReviews = dbReviews.reviews.filter(obj => {
+        return obj.flashcard_id === flashcardId
+        }
+    )
+    const selectedRatings = selectedReviews.map(a => a.rating)
     resp.send(selectedRatings)
 })
 
