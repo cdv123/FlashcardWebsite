@@ -46,44 +46,44 @@
             "back": "The inverse is also orthogonal",
             "date_of_creation": "Fri Mar 03 2023 15:00:00 GMT+0000 (Greenwich Mean Time)"
         }, {
-            "id":8,
+            "id": 8,
             "subject": "Physics",
             "front": "What is the equation relating acceleration, velocity, and radius in circular motion",
             "back": "a = v^2/r",
             "date_of_creation": "Wed Mar 08 2023 09:13:23 GMT+0000 (Greenwich Mean Time)"
         }, {
-            "id":9,
-            "subject":"Physics",
+            "id": 9,
+            "subject": "Physics",
             "front": "What is Kirchoff's first law",
             "back": "The sum of all currents flowing into a junction is equal to the sum of all currents flowing out of a junction",
             "date_of_creation": "Wed Mar 08 2023 09:15:05 GMT+0000 (Greenwich Mean Time)"
         }, {
-            "id":10,
-            "subject":"Physics",
+            "id": 10,
+            "subject": "Physics",
             "front": "What is Kirchoff's second law",
             "back": "The sum of potential differences of the components is equal to 0 around any closed loop in a circuit",
             "date_of_creation": "Wed Mar 08 2023 11:28:05 GMT+0000 (Greenwich Mean Time)"
         }, {
-            "id":11,
-            "subject":"Physics",
-            "front":"What is the equation relating power, voltage and current",
+            "id": 11,
+            "subject": "Physics",
+            "front": "What is the equation relating power, voltage and current",
             "back": "P = IV",
             "date_of_creation": "Wed Mar 08 2023 11:32:15 GMT+0000 (Greenwich Mean Time)"
         }, {
-            "id":12,
+            "id": 12,
             "subject": "Physics",
             "front": "What is the equation relating voltage, current and resistance",
             "back": "V = IR",
             "date_of_creation": "Wed Mar 08 2023 11:33:58 GMT+0000 (Greenwich Mean Time)"
         }, {
-            "id":13,
+            "id": 13,
             "subject": "Physics",
             "front": "What is the SI unit for resistance",
             "back": "ohms",
             "date_of_creation": "Wed Mar 08 2023 11:36:03 GMT+0000 (Greenwich Mean Time)"
         }, {
-            "id":14,
-            "subject":"Physics",
+            "id": 14,
+            "subject": "Physics",
             "front": "What is the equation relating mass, distance between two objects and gravitational force",
             "back": "F = Gm1m2/r^2",
             "date_of_creation": "Wed Mar 08 2023 11:38:15 GMT+0000 (Greenwich Mean Time)"
@@ -110,33 +110,33 @@
             "subject": "Maths",
             "front": "What method would normally be used to integrate lnxdx",
             "back": "Integration by parts",
-            "date_of_creation":"Wed Mar 08 2023 12:22:48 GMT+0000 (Greenwich Mean Time)"
+            "date_of_creation": "Wed Mar 08 2023 12:22:48 GMT+0000 (Greenwich Mean Time)"
         }, {
             "id": 19,
             "subject": "Chemistry",
             "front": "What is obtained when oxidising a primary alcohol under reflux",
             "back": "A carboxylic acid",
-            "date_of_creation":"Wed Mar 08 2023 12:25:41 GMT+0000 (Greenwich Mean Time)"
+            "date_of_creation": "Wed Mar 08 2023 12:25:41 GMT+0000 (Greenwich Mean Time)"
         }, {
-            "id":20,
+            "id": 20,
             "subject": "Chemistry",
             "front": "What is obtained when oxidising a primary alcohol under distillation",
             "back": "An alkane",
             "date_of_creation": "Wed Mar 08 2023 12:28:29 GMT+0000 (Greenwich Mean Time)"
         }, {
-            "id":21,
+            "id": 21,
             "subject": "Chemistry",
             "front": "What is obtained when oxidising a secondary alochol under reflux",
             "back": "A ketone",
             "date_of_creation": "Wed Mar 08 2023 12:29:58 GMT+0000 (Greenwich Mean Time)"
         }, {
-            "id":22,
+            "id": 22,
             "subject": "Chemistry",
             "front": "What kind of alcohols is difficult to oxidise",
             "back": "Tertiary alcohols",
             "date_of_creation": "Wed Mar 08 2023 12:31:31 GMT+0000 (Greenwich Mean Time)"
         }, {
-            "id":23,
+            "id": 23,
             "subject": "Physics",
             "front": "What is the equation relating buoyancy force, density, gravitational field strength and volume",
             "back": "Buoyancy force = density * graviational field strength * volumne"

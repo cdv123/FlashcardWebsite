@@ -18,9 +18,9 @@
             "comment": "dreadful"
         }, {
             "id": 3,
-            "review_title": "a",
-            "reviewer_name": "f\\sdfs\\",
-            "comment": "fdaffa",
+            "review_title": "Perfect",
+            "reviewer_name": "Bob",
+            "comment": "Simply amazing",
             "rating": "5/5",
             "flashcard_id": "2",
             "date_of_creation": "26/1/2023 21:10"
@@ -31,7 +31,15 @@
             "comment": "Rudementary definition. ",
             "rating": "3/5",
             "flashcard_id": "6",
-            "date_of_creation": "27/1/2023 14:3"
+            "date_of_creation": "27/1/2023 14:30"
+        }, {
+            "id":5,
+            "review_title": "Decent",
+            "reviewer_name": "John",
+            "comment": "overall a decent flashcard",
+            "rating": "4/5",
+            "flashcard_id": "1",
+            "date_of_creation": "09/03/2023 19:58"
         }
     ]
 }

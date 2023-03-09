@@ -13,36 +13,35 @@ app.use(express.static(path.join(__dirname, 'client')));
 const dbFlashcards = require(fileNameForFlashcards);
 
 app.get('/flashcards', function (req, resp) {
-    // const flashcardKeys = Object.keys(flashcards)
     resp.send(dbFlashcards);
 });
 
-app.get('/flashcards/subject', function (req,resp){
-    const subject = dbFlashcards.flashcards.map(a => a.subject)
-    resp.send(subject)
-})
+app.get('/flashcards/subject', function (req, resp) {
+    const subject = dbFlashcards.flashcards.map(a => a.subject);
+    resp.send(subject);
+});
 
 const fileNameForReviews = './reviews.json';
 const dbReviews = require(fileNameForReviews);
 
 app.get('/reviews/:flashcard_id', function (req, resp) {
-    const flashcardId = req.params.flashcard_id
+    const flashcardId = req.params.flashcard_id;
     const selectedReviews = dbReviews.reviews.filter(obj => {
-        return obj.flashcard_id === flashcardId
+        return obj.flashcard_id === flashcardId;
         }
-    )
+    );
     resp.send(selectedReviews);
 });
 
-app.get('/reviews/:flashcard_id/rating', function (req,resp){
-    const flashcardId = req.params.flashcard_id
+app.get('/reviews/:flashcard_id/rating', function (req, resp) {
+    const flashcardId = req.params.flashcard_id;
     const selectedReviews = dbReviews.reviews.filter(obj => {
-        return obj.flashcard_id === flashcardId
+        return obj.flashcard_id === flashcardId;
         }
-    )
-    const selectedRatings = selectedReviews.map(a => a.rating)
-    resp.send(selectedRatings)
-})
+    );
+    const selectedRatings = selectedReviews.map(a => a.rating);
+    resp.send(selectedRatings);
+});
 
 app.post('/flashcards/add', function (req, resp) {
     const newFlashcard = {};
@@ -51,7 +50,7 @@ app.post('/flashcards/add', function (req, resp) {
     newFlashcard.front = req.body.front;
     newFlashcard.back = req.body.back;
     newFlashcard.date_of_creation = req.body.date_of_creation;
-    db.flashcards.push(newFlashcard);
+    dbFlashcards.flashcards.push(newFlashcard);
     fs.writeFileSync(fileNameForFlashcards, JSON.stringify(dbFlashcards));
     resp.send(dbFlashcards);
 });
@@ -84,5 +83,9 @@ app.post('/reviews/add', function (req, resp) {
     fs.writeFileSync(fileNameForReviews, JSON.stringify(dbReviews));
     resp.send(dbReviews);
 });
-
+// questions to ask practical demonstrator:
+// where to put try catch
+// how to do search get request
+// how to do documentation
+// what are good tests to do
 module.exports = app;
