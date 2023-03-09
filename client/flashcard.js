@@ -1,6 +1,6 @@
 const endpointRoot = 'http://127.0.0.1:8080/';
-
-async function showFlashcards (subjectToShow, startPoint) {
+var counter = 0;
+async function showFlashcards (subjectToShow) {
     const flashcardsResponse = await fetch(endpointRoot + 'flashcards');
     const flashcardKeysText = await flashcardsResponse.text();
     const flashcardKeys = JSON.parse(flashcardKeysText);
@@ -9,40 +9,43 @@ async function showFlashcards (subjectToShow, startPoint) {
     const reviews = document.querySelectorAll('.see-reviews');
     const flashcardArray = flashcardKeys.flashcards;
     let j = 0;
-    if (startPoint >= flashcardArray.length) {
-        for (let i = 0; i < flashcardArray.length; i++) {
-            flashcardsFront[i].innerHTML = 'Empty';
-            flashcardsBack[i].innerHTML = 'Empty';
-        }
-    } else if (startPoint < 0) {
-        startPoint = flashcardArray.length + startPoint;
-    }
     let counter2 = 0;
-    let max = 9;
-    if (flashcardArray.length < 9) {
-        max = flashcardArray.length;
+    let relevantCards = []
+    if (subjectToShow == ''){
+        relevantCards = flashcardArray
     }
-    for (let i = startPoint; i < max; i++) {
-        reviews[i].addEventListener('click', function () {
-            showReviews(flashcardArray[i].id, true);
-        });
-        if (subjectToShow === '') {
-            counter2 += 1;
-            flashcardsFront[j].innerHTML = flashcardArray[i].front;
-            flashcardsBack[j].innerHTML = flashcardArray[i].back;
-            j++;
-        } else if (flashcardArray[i].subject === subjectToShow) {
-            counter2 += 1;
-            flashcardsFront[j].innerHTML = flashcardArray[i].front;
-            flashcardsBack[j].innerHTML = flashcardArray[i].back;
-            j++;
+    else{
+        for (i = 0; i<flashcardArray.length; i++){
+            if (flashcardArray[i].subject == subjectToShow) {
+                relevantCards.push(flashcardArray[i])
+            }
         }
+    }
+    if (counter < 0){
+        counter = Math.ceil(relevantCards.length/9)*9-9
+    }
+    else if (counter > relevantCards.length){
+        counter = 0
+    }
+    let max = 9+counter;
+    if (relevantCards.length < 9 || max > relevantCards.length) {
+        max = relevantCards.length;
+    }
+    for (let i = counter; i < max; i++) {
+        reviews[i-counter].addEventListener('click', function () {
+            showReviews(relevantCards[i].id, true);
+        });
+        counter2+=1
+        flashcardsFront[j].innerHTML = relevantCards[i].front;
+        flashcardsBack[j].innerHTML = relevantCards[i].back
+        j++;
     }
     for (let i = counter2; i < flashcardsFront.length; i++) {
         flashcardsFront[i].innerHTML = 'Empty';
         flashcardsBack[i].innerHTML = 'Empty';
     }
 }
+// add another get request for reviews which shows ratings for each review, and then shows the average rating
 async function showAllFlashcards (sortBy) {
     // try{
         const flashcardResponse = await fetch(endpointRoot + 'flashcards');
@@ -120,26 +123,17 @@ async function showReviews (flashcardID, update) {
 }
 
 async function showSubjects () {
-    try {
-    const flashcardsResponse = await fetch(endpointRoot + 'flashcards');
-    const flashcardKeysText = await flashcardsResponse.text();
-    const flashcardKeys = JSON.parse(flashcardKeysText);
+    const subjectKeysRespone = await fetch(endpointRoot + 'flashcards/subject')
+    const subjectKeysText = await subjectKeysRespone.text();
+    const subjects = JSON.parse(subjectKeysText)
+    const uniqueSubjects = [... new Set(subjects)]
     const chooseSubject = document.getElementById('select-subject');
-    const flashcardArray = flashcardKeys.flashcards;
-    const subjects = [];
-    for (let i = 0; i < flashcardArray.length; i++) {
-        if (!subjects.includes(flashcardArray[i].subject)) {
-            subjects.push(flashcardArray[i].subject);
-        }
-    }
     chooseSubject.innerHTML = '<option selected>Please select subject</option>';
-    for (let i = 0; i < subjects.length; i++) {
-        chooseSubject.innerHTML += `<option value="${i + 1}">${subjects[i]}</option>`;
+    for (let i = 0; i < uniqueSubjects.length; i++) {
+        chooseSubject.innerHTML += `<option value="${i + 1}">${uniqueSubjects[i]}</option>`;
     }
-} catch (err) {
-        alert('connection to server lost');
-    }
-}
+} 
+
 
 async function postEdits (flashcardID) {
     const editFlashcardForm = document.getElementById('flashcard_form2');
@@ -239,7 +233,6 @@ async function postReviews (flashcardID) {
 
 document.addEventListener('DOMContentLoaded', showFlashcards('', 0));
 document.addEventListener('DOMContentLoaded', function () {
-    let counter = 0;
     const selectSubject = document.getElementById('select-subject');
     selectSubject.addEventListener('change', function () {
         const value = selectSubject.options[selectSubject.selectedIndex].text;
@@ -255,12 +248,20 @@ document.addEventListener('DOMContentLoaded', function () {
     rightArrow.addEventListener('click', function () {
         const value = selectSubject.options[selectSubject.selectedIndex].text;
         counter += 9;
-        showFlashcards(value, counter);
+        if (value === 'Please select subject') {
+            showFlashcards('', counter);
+        } else {
+            showFlashcards(value, counter);
+        }
     });
     leftArrow.addEventListener('click', function () {
         const value = selectSubject.options[selectSubject.selectedIndex].text;
         counter -= 9;
-        showFlashcards(value, counter);
+        if (value === 'Please select subject') {
+            showFlashcards('', counter);
+        } else {
+            showFlashcards(value, counter);
+        }
     });
     const editFlashcard = document.getElementById('edit-flashcard');
     editFlashcard.addEventListener('click', function () {

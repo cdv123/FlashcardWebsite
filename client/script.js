@@ -1,5 +1,6 @@
 
 window.addEventListener('DOMContentLoaded', (event) => {
+  const wrapper = document.querySelectorAll('.wrapper');
   const rightArrow = document.getElementById('right-arrow');
   const leftArrow = document.getElementById('left-arrow');
   const container = document.querySelector('.container');
@@ -56,8 +57,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
   submitReview.addEventListener('click', function () {
     setTimeout(removeColours, 100);
   });
-  const wrapper = document.querySelectorAll('.wrapper');
-  window.addEventListener('resize', function () {
+  changeSize()
+  window.addEventListener('resize', function() {
+    changeSize()
+  });
+  function changeSize(){
     if (window.innerWidth < 780) {
       for (let i = 0; i < wrapper.length; i++) {
         if (wrapper[i].classList.contains('row')) {
@@ -85,5 +89,5 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
       }
     }
-  });
+  }
 });

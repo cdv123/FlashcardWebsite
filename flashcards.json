@@ -1,1 +1,145 @@
-{"flashcards":[{"id":1,"subject":"Maths","front":"What is the integral of cosx","back":"sinx","date_of_creation":"Sun Feb 05 2023 11:05:36 GMT+0000 (Greenwich Mean Time)"},{"id":2,"subject":"Physics","date_of_creation":"Mon Feb 20 2023 15:30:05 GMT+0000 (Greenwich Mean Time)","front":"What is the moment of inertia of a disk","back":"1/2mR^2 where R is the radius of the disk and m is the mass of the disk"},{"id":3,"subject":"History","date_of_creation":"Sun Feb 19 2023 1:10:41 GMT+0000 (Greenwich Mean Time)","front":"What was the date of the gulf of Tonkin incident","back":"2 August 1964"},{"id":4,"subject":"Physics","date_of_creation":"Sun Feb 12 2023 12:21:50 GMT+0000 (Greenwich Mean Time)","front":"What is Newton's Second Law of motion","back":"Force is equal to the rate of change of momentum (which equals to force multiplied by acceleration if mass is constant)"},{"id":5,"subject":"Physics","date_of_creation":"Tue Feb 14 2023 20:30:12 GMT+0000 (Greenwich Mean Time)","front":"What is the equation for the moment of inertia of a rod about one of its ends","back":"1/3mL^2 where L is the length of the rod and m is the mass of the rod"},{"id":6,"subject":"Politics and IR","front":"Sovereignty ","back":"A state is sovereign when it has full authority and control over what happens within its borders. ","date_of_creation":"Mon Feb 27 2023 14:03:06 GMT+0000 (Greenwich Mean Time)"},{"id":7,"subject":"Maths","front":"What can be said about the inverse of an orthogonal matrix","back":"The inverse is also orthogonal","date_of_creation":"Fri Mar 03 2023 15:00:00 GMT+0000 (Greenwich Mean Time)"},{"id":8,"subject":"Maths","front":"What can be said about the inverse of an orthogonal matrix","back":"The inverse is also orthogonal","date_of_creation":"Fri Mar 03 2023 15:00:00 GMT+0000 (Greenwich Mean Time)"}]}
+{
+    "flashcards": [
+        {
+            "id": 1,
+            "subject": "Maths",
+            "front": "What is the integral of cosx",
+            "back": "sinx",
+            "date_of_creation": "Sun Feb 05 2023 11:05:36 GMT+0000 (Greenwich Mean Time)"
+        },
+        {
+            "id": 2,
+            "subject": "Physics",
+            "date_of_creation": "Mon Feb 20 2023 15:30:05 GMT+0000 (Greenwich Mean Time)",
+            "front": "What is the moment of inertia of a disk",
+            "back": "1/2mR^2 where R is the radius of the disk and m is the mass of the disk"
+        },
+        {
+            "id": 3,
+            "subject": "History",
+            "date_of_creation": "Sun Feb 19 2023 1:10:41 GMT+0000 (Greenwich Mean Time)",
+            "front": "What was the date of the gulf of Tonkin incident",
+            "back": "2 August 1964"
+        },
+        {
+            "id": 4,
+            "subject": "Physics",
+            "date_of_creation": "Sun Feb 12 2023 12:21:50 GMT+0000 (Greenwich Mean Time)",
+            "front": "What is Newton's Second Law of motion",
+            "back": "Force is equal to the rate of change of momentum (which equals to force multiplied by acceleration if mass is constant)"
+        }, {
+            "id": 5,
+            "subject": "Physics",
+            "date_of_creation": "Tue Feb 14 2023 20:30:12 GMT+0000 (Greenwich Mean Time)",
+            "front": "What is the equation for the moment of inertia of a rod about one of its ends",
+            "back": "1/3mL^2 where L is the length of the rod and m is the mass of the rod"
+        }, {
+            "id": 6,
+            "subject": "Politics and IR",
+            "front": "Sovereignty ",
+            "back": "A state is sovereign when it has full authority and control over what happens within its borders. ",
+            "date_of_creation": "Mon Feb 27 2023 14:03:06 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id": 7,
+            "subject": "Maths",
+            "front": "What can be said about the inverse of an orthogonal matrix",
+            "back": "The inverse is also orthogonal",
+            "date_of_creation": "Fri Mar 03 2023 15:00:00 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id":8,
+            "subject": "Physics",
+            "front": "What is the equation relating acceleration, velocity, and radius in circular motion",
+            "back": "a = v^2/r",
+            "date_of_creation": "Wed Mar 08 2023 09:13:23 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id":9,
+            "subject":"Physics",
+            "front": "What is Kirchoff's first law",
+            "back": "The sum of all currents flowing into a junction is equal to the sum of all currents flowing out of a junction",
+            "date_of_creation": "Wed Mar 08 2023 09:15:05 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id":10,
+            "subject":"Physics",
+            "front": "What is Kirchoff's second law",
+            "back": "The sum of potential differences of the components is equal to 0 around any closed loop in a circuit",
+            "date_of_creation": "Wed Mar 08 2023 11:28:05 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id":11,
+            "subject":"Physics",
+            "front":"What is the equation relating power, voltage and current",
+            "back": "P = IV",
+            "date_of_creation": "Wed Mar 08 2023 11:32:15 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id":12,
+            "subject": "Physics",
+            "front": "What is the equation relating voltage, current and resistance",
+            "back": "V = IR",
+            "date_of_creation": "Wed Mar 08 2023 11:33:58 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id":13,
+            "subject": "Physics",
+            "front": "What is the SI unit for resistance",
+            "back": "ohms",
+            "date_of_creation": "Wed Mar 08 2023 11:36:03 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id":14,
+            "subject":"Physics",
+            "front": "What is the equation relating mass, distance between two objects and gravitational force",
+            "back": "F = Gm1m2/r^2",
+            "date_of_creation": "Wed Mar 08 2023 11:38:15 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id": 15,
+            "subject": "Physics",
+            "front": "What is the value of g to 3 significant figures",
+            "back": "9.81ms^-2",
+            "date_of_creation": "Wed Mar 08 2023 11:44:23 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id": 16,
+            "subject": "History",
+            "front": "When did the Korean war begin",
+            "back": "25 June 1970",
+            "date_of_creation": "Wed Mar 08 2023 12:18:31 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id": 17,
+            "subject": "Chemistry",
+            "front": "What is Le Chatelier's principle",
+            "back": "If coniditions are changed in a dynamic equilibrium, the positon of the equilibrium shifts to counteract this change",
+            "date_of_creation": "Wed Mar 08 2023 12:21:54 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id": 18,
+            "subject": "Maths",
+            "front": "What method would normally be used to integrate lnxdx",
+            "back": "Integration by parts",
+            "date_of_creation":"Wed Mar 08 2023 12:22:48 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id": 19,
+            "subject": "Chemistry",
+            "front": "What is obtained when oxidising a primary alcohol under reflux",
+            "back": "A carboxylic acid",
+            "date_of_creation":"Wed Mar 08 2023 12:25:41 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id":20,
+            "subject": "Chemistry",
+            "front": "What is obtained when oxidising a primary alcohol under distillation",
+            "back": "An alkane",
+            "date_of_creation": "Wed Mar 08 2023 12:28:29 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id":21,
+            "subject": "Chemistry",
+            "front": "What is obtained when oxidising a secondary alochol under reflux",
+            "back": "A ketone",
+            "date_of_creation": "Wed Mar 08 2023 12:29:58 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id":22,
+            "subject": "Chemistry",
+            "front": "What kind of alcohols is difficult to oxidise",
+            "back": "Tertiary alcohols",
+            "date_of_creation": "Wed Mar 08 2023 12:31:31 GMT+0000 (Greenwich Mean Time)"
+        }, {
+            "id":23,
+            "subject": "Physics",
+            "front": "What is the equation relating buoyancy force, density, gravitational field strength and volume",
+            "back": "Buoyancy force = density * graviational field strength * volumne"
+        }
+    ]
+}

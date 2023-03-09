@@ -21,4 +21,15 @@ describe('Test the flashcards and reviews service', () => {
             .send(params)
                 .expect(200);
     })
+    // test('GET /flashcards', () => {
+    //     return request(app)
+    //         .get('/flaschards')
+    //         .expect('')
+    // })
+    test('GET /reviews returns JSON', () => {
+        return request(app)
+            .get('reviews')
+            .expect('Content-type', /json/)
+    })
+
 })
