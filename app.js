@@ -30,7 +30,8 @@ app.get('/reviews/:flashcard_id', function (req, resp) {
         return obj.flashcard_id === flashcardId;
         }
     );
-    resp.send(selectedReviews);
+    resp.body = selectedReviews;
+    resp.send(resp.body);
 });
 
 app.get('/reviews/:flashcard_id/rating', function (req, resp) {
@@ -40,7 +41,8 @@ app.get('/reviews/:flashcard_id/rating', function (req, resp) {
         }
     );
     const selectedRatings = selectedReviews.map(a => a.rating);
-    resp.send(selectedRatings);
+    resp.body = selectedRatings;
+    resp.send(resp.body);
 });
 
 app.post('/flashcards/add', function (req, resp) {

@@ -33,13 +33,79 @@
             "flashcard_id": "6",
             "date_of_creation": "27/1/2023 14:30"
         }, {
-            "id":5,
+            "id":5, 
             "review_title": "Decent",
             "reviewer_name": "John",
             "comment": "overall a decent flashcard",
             "rating": "4/5",
             "flashcard_id": "1",
             "date_of_creation": "09/03/2023 19:58"
-        }
+        },
+            {
+                "id": 6,
+                "flashcard_id": "1",
+                "reviewer_name": "John",
+                "review_date": "09/03/2023 11:45",
+                "review_title": "Great flashcard!",
+                "rating": "5/5",
+                "comment": "This flashcard was very helpful in preparing for my exam. The information was clear and concise, and the formatting made it easy to study. I would definitely recommend this flashcard to others!"
+              },
+              {
+                "id": 7,
+                "flashcard_id": "2",
+                "reviewer_name": "Emily",
+                "review_date": "08/03/2023 15:30",
+                "review_title": "Confusing flashcard",
+                "rating": "2/5",
+                "comment": "I found this flashcard to be quite confusing. The information was disorganized and hard to follow. I had to spend a lot of time trying to decipher what the author was trying to say. Overall, not a great study resource."
+              },
+              {
+                "id": 8,
+                "flashcard_id": "3",
+                "reviewer_name": "David",
+                "review_date": "07/03/2023 19:20",
+                "review_title": "Okay flashcard",
+                "rating": "3/5",
+                "comment": "This flashcard was okay. It had some good information on it, but I didn't find it particularly engaging. The layout was a bit boring, and I didn't feel like I was really learning anything new. It's not terrible, but there are probably better flashcards out there."
+          },{
+            "id": 9,
+            "flashcard_id": "10",
+            "reviewer_name": "Sarah",
+            "review_date": "02/03/2023 14:30",
+            "review_title": "Great flashcard!",
+            "rating": "5/5",
+            "comment": "I found this flashcard to be really helpful! The information was presented clearly and concisely, and it was easy to remember. Would definitely recommend to others!"
+            },
+            
+            {
+            "id": 10,
+            "flashcard_id": "3",
+            "reviewer_name": "David",
+            "review_date": "03/03/2023 09:45",
+            "review_title": "Needs improvement",
+            "rating": "2/5",
+            "comment": "This flashcard was okay, but it could use some improvement. Some of the information was unclear and there were a few mistakes. I would still recommend it, but with some reservations."
+            },
+            
+            {
+            "id": 11,
+            "flashcard_id": "5",
+            "reviewer_name": "Emily",
+            "review_date": "05/03/2023 17:15",
+            "review_title": "Great for beginners",
+            "rating": "4/5",
+            "comment": "As a beginner in this subject, I found this flashcard to be really helpful. The information was easy to understand and it was presented in a way that made it easy to remember. The only reason I didn't give it a 5/5 is because I think it could be more comprehensive."
+            },
+            
+            {
+            "id": 12,
+            "flashcard_id": "7",
+            "reviewer_name": "John",
+            "review_date": "08/03/2023 11:20",
+            "review_title": "Disappointed",
+            "rating": "2/5",
+            "comment": "I was really disappointed with this flashcard. The information was presented poorly and it was hard to remember anything. I would not recommend this flashcard to anyone."
+            }
+          
     ]
 }

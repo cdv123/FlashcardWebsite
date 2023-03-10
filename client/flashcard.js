@@ -104,7 +104,6 @@ async function showReviews (flashcardID, update) {
     const review = document.querySelector('.list-of-reviews');
     let averageRating = 0
     let reviewList = '';
-    console.log(selectedRatings)
     if (selectedRatings.length > 0){
         for (let i = 0; i< selectedRatings.length; i++){
             averageRating+= parseInt(selectedRatings[i].charAt(0))
@@ -125,7 +124,7 @@ async function showReviews (flashcardID, update) {
     if (update === true) {
         postReviews(flashcardID);
     }
-
+    
 }
 
 async function showSubjects () {
