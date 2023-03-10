@@ -63,7 +63,6 @@ async function showAllFlashcards (sortBy) {
                   return 0; ;
               };
         }
-        console.log(sortBy);
         if (sortBy === 'date_of_creation') {
             flashcardArray.sort(function (a, b) { return new Date(b.date_of_creation) - new Date(a.date_of_creation); });
         } else if (sortBy !== 'Sort by:') {
@@ -95,6 +94,7 @@ async function showAllFlashcards (sortBy) {
     // }
 }
 async function showReviews (flashcardID, update) {
+    try{
     const reviewResponse = await fetch(`http://127.0.0.1:8080/reviews/${flashcardID}`);
     const reviewResponseText = await reviewResponse.text();
     const selectedReviews = JSON.parse(reviewResponseText);
@@ -123,11 +123,15 @@ async function showReviews (flashcardID, update) {
     }
     if (update === true) {
         postReviews(flashcardID);
+    }}
+    catch {
+        alert("Connection to server lost, cannot show reviews")
     }
-    
 }
 
+
 async function showSubjects () {
+    try{
     const subjectKeysRespone = await fetch(endpointRoot + 'flashcards/subject')
     const subjectKeysText = await subjectKeysRespone.text();
     const subjects = JSON.parse(subjectKeysText)
@@ -137,6 +141,10 @@ async function showSubjects () {
     for (let i = 0; i < uniqueSubjects.length; i++) {
         chooseSubject.innerHTML += `<option value="${i + 1}">${uniqueSubjects[i]}</option>`;
     }
+    }
+    catch{
+        alert("Server down, could not load subjects")
+    }   
 } 
 
 async function searchFlashcards(){
@@ -145,7 +153,29 @@ async function searchFlashcards(){
         event.preventDefault();
         const data = new FormData(searchForm)
         const json = JSON.stringify(Object.fromEntries(data))
-        // const response = await fetch()
+        const searchInput = JSON.parse(json)
+        const search = searchInput.front
+        const response = await fetch(endpointRoot + `flashcards/search?searchquery=${search}`)
+        const responseText = await response.text()
+        const flashcards = JSON.parse(responseText)
+        const container = document.getElementById('all-flashcards');
+        const editFront = document.getElementById('front-flashcard2');
+        const editBack = document.getElementById('back-flashcard2');
+        const editSubject = document.getElementById('subject4');
+        let listToAdd = '';
+        for (let i = 0; i < flashcards.length; i++) {
+            listToAdd += `<div class = "every-flashcard" data-bs-dismiss="modal"> <p> Front of card: ${flashcards[i].front}</p> <p> Back of card: ${flashcards[i].back}</p> <p> Subject of card: ${flashcards[i].subject}</p> <p> Date of creation: ${flashcards[i].date_of_creation}</p></div>`;
+        }
+        container.innerHTML = listToAdd;
+        const everyFlashcard = document.querySelectorAll('.every-flashcard');
+        for (let i = 0; i < everyFlashcard.length; i++) {
+            everyFlashcard[i].addEventListener('click', function () {
+                editFront.value = flashcards[i].front;
+                editBack.value = flashcards[i].back;
+                editSubject.value = flashcards[i].subject;
+                postEdits(flashcards[i].id);
+            });
+        }
     })
 }
 
@@ -297,4 +327,5 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     showSubjects();
     postFlashcards();
+    searchFlashcards();
 });

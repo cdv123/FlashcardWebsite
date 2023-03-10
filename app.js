@@ -33,7 +33,17 @@ app.get('/reviews/:flashcard_id', function (req, resp) {
     resp.body = selectedReviews;
     resp.send(resp.body);
 });
-
+app.get('/flashcards/search', function (req, resp) {
+    const searchQuery = req.query.searchquery;
+    const searchResult = [];
+    for (let item = 0; item < dbFlashcards.flashcards.length; item++) {
+        if (dbFlashcards.flashcards[item].front.toUpperCase().includes(searchQuery.toUpperCase())) {
+            searchResult.push(dbFlashcards.flashcards[item]);
+        }
+    }
+    resp.body = searchResult;
+    resp.send(searchResult);
+});
 app.get('/reviews/:flashcard_id/rating', function (req, resp) {
     const flashcardId = req.params.flashcard_id;
     const selectedReviews = dbReviews.reviews.filter(obj => {
