@@ -99,4 +99,9 @@ describe('Test the flashcards and reviews service', () => {
             .get('/flashcards/search?searchquery=Tonkin')
             .expect(/Tonkin/)
     })
+    test('GET /flashcards/search query is not case sensitive', () => {
+        return request(app)
+            .get('/flashcards/search?searchquery=tonkin')
+            .expect(/Tonkin/)
+    })
 })

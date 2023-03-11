@@ -1,6 +1,7 @@
 const endpointRoot = 'http://127.0.0.1:8080/';
 var counter = 0;
 async function showFlashcards (subjectToShow) {
+    try{
     const flashcardsResponse = await fetch(endpointRoot + 'flashcards');
     const flashcardKeysText = await flashcardsResponse.text();
     const flashcardKeys = JSON.parse(flashcardKeysText);
@@ -43,11 +44,14 @@ async function showFlashcards (subjectToShow) {
     for (let i = counter2; i < flashcardsFront.length; i++) {
         flashcardsFront[i].innerHTML = 'Empty';
         flashcardsBack[i].innerHTML = 'Empty';
+    }}
+    catch{
+        alert("Connection to server lost, cannot show flashcards")
     }
 }
 // add another get request for reviews which shows ratings for each review, and then shows the average rating
 async function showAllFlashcards (sortBy) {
-    // try{
+    try{
         const flashcardResponse = await fetch(endpointRoot + 'flashcards');
         const flashcardKeysText = await flashcardResponse.text();
         const flashcardKeys = JSON.parse(flashcardKeysText);
@@ -88,10 +92,10 @@ async function showAllFlashcards (sortBy) {
             });
         }
 
-    // }
-    // catch(err){
-    //     alert("connection to server lost")
-    // }
+    }
+    catch(err){
+        alert("connection to server lost, cannot show flashcards")
+    }
 }
 async function showReviews (flashcardID, update) {
     try{
@@ -151,6 +155,7 @@ async function searchFlashcards(){
     const searchForm = document.getElementById('search-form')
     searchForm.addEventListener('submit', async function(event){
         event.preventDefault();
+        try{
         const data = new FormData(searchForm)
         const json = JSON.stringify(Object.fromEntries(data))
         const searchInput = JSON.parse(json)
@@ -175,6 +180,9 @@ async function searchFlashcards(){
                 editSubject.value = flashcards[i].subject;
                 postEdits(flashcards[i].id);
             });
+        }}
+        catch{
+            alert("Connection to server lost, cannot search flashcards")
         }
     })
 }
