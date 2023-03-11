@@ -123,7 +123,7 @@ async function showReviews (flashcardID, update) {
     if (selectedReviews.length > 0) {
         review.innerHTML = reviewList;
     } else {
-        review.innerHTML = 'Empty';
+        review.innerHTML = 'Currently, this flashcard has no reviews, feel free to add one!';
     }
     if (update === true) {
         postReviews(flashcardID);
