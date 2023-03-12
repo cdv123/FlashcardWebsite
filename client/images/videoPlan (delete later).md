@@ -2,7 +2,7 @@
 
 ## Video
 ---
-1. Start with **npm start** in VS Code, and then in chrome open the link [http://127.0.0.1:8080](http://127.0.0.1:8080) to open the website.
+1. Start with **npm install** and then **npm start** in VS Code, and then in chrome open the link [http://127.0.0.1:8080](http://127.0.0.1:8080) to open the website.
 2. Show that website is responsive by first changing the screen width.
 3. Then show how website looks on phone (show that text boxes can be scrolled through for the front of the flashcard).
 4. Prove use of Dynamic AJAX loading and that the website is single page asynchronous
