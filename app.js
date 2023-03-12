@@ -95,9 +95,4 @@ app.post('/reviews/add', function (req, resp) {
     fs.writeFileSync(fileNameForReviews, JSON.stringify(dbReviews));
     resp.send(dbReviews);
 });
-// questions to ask practical demonstrator:
-// where to put try catch
-// how to do search get request
-// how to do documentation
-// what are good tests to do
 module.exports = app;
