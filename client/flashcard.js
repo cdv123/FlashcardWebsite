@@ -1,5 +1,9 @@
 const endpointRoot = 'http://127.0.0.1:8080/';
 var counter = 0;
+var reviews = document.querySelectorAll('.see-reviews');
+
+
+
 async function showFlashcards (subjectToShow) {
     try{
     const flashcardsResponse = await fetch(endpointRoot + 'flashcards');
@@ -7,18 +11,17 @@ async function showFlashcards (subjectToShow) {
     const flashcardKeys = JSON.parse(flashcardKeysText);
     const flashcardsFront = document.querySelectorAll('.flashcard-front-text');
     const flashcardsBack = document.querySelectorAll('.flashcard-back-text');
-    const reviews = document.querySelectorAll('.see-reviews');
     const flashcardArray = flashcardKeys.flashcards;
     let j = 0;
     let counter2 = 0;
-    let relevantCards = []
+    relevantCards = []
     if (subjectToShow == ''){
         relevantCards = flashcardArray
-    }
+}
     else{
         for (i = 0; i<flashcardArray.length; i++){
             if (flashcardArray[i].subject == subjectToShow) {
-                relevantCards.push(flashcardArray[i])
+            relevantCards.push(flashcardArray[i])
             }
         }
     }
@@ -32,10 +35,11 @@ async function showFlashcards (subjectToShow) {
     if (relevantCards.length < 9 || max > relevantCards.length) {
         max = relevantCards.length;
     }
-    for (let i = counter; i < max; i++) {
-        reviews[i-counter].addEventListener('click', function () {
-            showReviews(relevantCards[i].id, true);
-        });
+    
+    for (let  i = counter; i < max; i++) {
+        reviews[i-counter].onclick = function(){
+            showReviews(relevantCards[i].id,true)
+        };
         counter2+=1
         flashcardsFront[j].innerHTML = relevantCards[i].front;
         flashcardsBack[j].innerHTML = relevantCards[i].back
@@ -49,7 +53,6 @@ async function showFlashcards (subjectToShow) {
         alert("Connection to server lost, cannot show flashcards")
     }
 }
-// add another get request for reviews which shows ratings for each review, and then shows the average rating
 async function showAllFlashcards (sortBy) {
     try{
         const flashcardResponse = await fetch(endpointRoot + 'flashcards');
@@ -194,7 +197,7 @@ async function postEdits (flashcardID) {
         const data = new FormData(editFlashcardForm);
         data.append('id', flashcardID);
         const json = JSON.stringify(Object.fromEntries(data));
-        // try{
+        try{
         const response = await fetch(endpointRoot + 'flashcards/update', {
             method: 'POST',
             headers: {
@@ -203,13 +206,12 @@ async function postEdits (flashcardID) {
             body: json
         });
         showSubjects();
-        showFlashcards('', 0);
+        showFlashcards('');
         editFlashcardForm.reset();
+        }
+        catch{
 
-        // }
-        // catch{
-
-        // }
+        }
     });
 }
 
@@ -233,9 +235,9 @@ async function postFlashcards () {
         const selectSubject2 = document.getElementById('select-subject');
         const value = selectSubject2.options[selectSubject2.selectedIndex].text;
         if (value === 'Please select subject') {
-            showFlashcards('', 0);
+            showFlashcards('');
         } else {
-            showFlashcards(value, 0);
+            showFlashcards(value);
         }
         showSubjects();
         flashcardForm.reset();
@@ -247,7 +249,7 @@ async function postFlashcards () {
 
 async function postReviews (flashcardID) {
     const reviewForm = document.getElementById('review');
-    reviewForm.addEventListener('submit', async function (event) {
+    reviewForm.onsubmit= async function (event) {
         try {
         event.preventDefault();
         const data = new FormData(reviewForm);
@@ -280,19 +282,20 @@ async function postReviews (flashcardID) {
 } catch (err) {
             alert('connection to server lost');
         }
-    });
+    };
 }
 
 document.addEventListener('DOMContentLoaded', showFlashcards('', 0));
 document.addEventListener('DOMContentLoaded', function () {
+
     const selectSubject = document.getElementById('select-subject');
     selectSubject.addEventListener('change', function () {
         const value = selectSubject.options[selectSubject.selectedIndex].text;
         counter = 0;
         if (value === 'Please select subject') {
-            showFlashcards('', 0);
+            showFlashcards('');
         } else {
-            showFlashcards(value, 0);
+            showFlashcards(value);
         }
     });
     const rightArrow = document.getElementById('right-arrow');
@@ -301,18 +304,18 @@ document.addEventListener('DOMContentLoaded', function () {
         const value = selectSubject.options[selectSubject.selectedIndex].text;
         counter += 9;
         if (value === 'Please select subject') {
-            showFlashcards('', counter);
+            showFlashcards('');
         } else {
-            showFlashcards(value, counter);
+            showFlashcards(value);
         }
     });
     leftArrow.addEventListener('click', function () {
         const value = selectSubject.options[selectSubject.selectedIndex].text;
         counter -= 9;
         if (value === 'Please select subject') {
-            showFlashcards('', counter);
+            showFlashcards('');
         } else {
-            showFlashcards(value, counter);
+            showFlashcards(value);
         }
     });
     const editFlashcard = document.getElementById('edit-flashcard');
