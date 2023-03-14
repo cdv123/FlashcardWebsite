@@ -14,29 +14,36 @@ const dbReviews = require(fileNameForReviews)
 
 // Test GET /flashcards works as intended
 describe('Test GET /flashcards', () => {
+    // test that GET /flashcards returns 200 - indicating that the request has succeeded 
     test('GET  /flashcards succeeds', () => {
         return request(app)
             .get('/flashcards')
             .expect(200);
     })
+    // test that GET /flashcards returns in a JSON format
     test('GET  /flashcards returns JSON', () => {
         return request(app)
             .get('/flashcards')
             .expect('Content-type', /json/);
     })
+    // test that GET /flashcards includes a specific flashcard
     test('GET /flashcards includes id 1', () => {
         return request(app)
             .get('/flashcards')
             .expect(/1/)
     })
+    // test that GET /flashcards includse all the flashcards in the flashcards.json file
     test('GET /flashcards gets all flashcards in the flashcards.json file', () => {
         return request(app)
             .get('/flashcards')
             .expect(dbFlashcards);
     })
 })
+// test that POST /flashcards/add works as intended
 describe('Test POST /flashcards/add', () =>{
-    const params = {id: 6, date_of_creation: 'Fri Mar 03 2023 15:00:00 GMT+0000 (Greenwich Mean Time)', front:'What can be said about the inverse of an orthogonal matrix', back:'The inverse is also orthogonal', subject:'Maths'};
+    // define parameters for the flashcard to be sent
+    const params = {id: 25, date_of_creation: 'Fri Mar 03 2023 15:00:00 GMT+0000 (Greenwich Mean Time)', front:'What can be said about the inverse of an orthogonal matrix', back:'The inverse is also orthogonal', subject:'Maths'};
+    // test that POST /flashcards/add returns 200, indicating that the request has succeeded
     test('POST  /flashcards/add succeeds', () => {
         return request(app)
             .post('/flashcards/add')
@@ -70,7 +77,7 @@ describe('Test POST /flashcards/add', () =>{
             .send(params)
             .then(() => {
                 //expect the flashcard just posted to be there
-                const filteredResult = dbFlashcards.flashcards.find((e) => e.id == 6);
+                const filteredResult = dbFlashcards.flashcards.find((e) => e.id == 25);
                 expect(filteredResult);
 
                 //delete flashcard added for testing
@@ -103,7 +110,7 @@ describe('Test /flashcards/update', () => {
     })
 }) 
 describe('Test /reviews/add', () => {
-    const params = {id:16,flashcard_id: '10',reviewer_name: 'Sarah',review_date: '02/03/2023 14:30',review_title: 'Great flashcard!',rating: '5/5',comment: 'I found this flashcard to be really helpful! The information was presented clearly and concisely, and it was easy to remember. Would definitely recommend to others!'};
+    const params = {id:18,flashcard_id: '10',reviewer_name: 'Sarah',review_date: '02/03/2023 14:30',review_title: 'Great flashcard!',rating: '5/5',comment: 'I found this flashcard to be really helpful! The information was presented clearly and concisely, and it was easy to remember. Would definitely recommend to others!'};
     test('POST  /reviews/add succeeds', () => {
         return request(app)
             .post('/reviews/add')

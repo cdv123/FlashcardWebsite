@@ -12,10 +12,12 @@ app.use(express.static(path.join(__dirname, 'client')));
 
 const dbFlashcards = require(fileNameForFlashcards);
 
+// get request to get all flashcards and their attributes
 app.get('/flashcards', function (req, resp) {
     resp.send(dbFlashcards);
 });
 
+// get request to get all the subjects of the flashcards, includes duplicates
 app.get('/flashcards/subject', function (req, resp) {
     const subject = dbFlashcards.flashcards.map(a => a.subject);
     resp.send(subject);
@@ -24,6 +26,7 @@ app.get('/flashcards/subject', function (req, resp) {
 const fileNameForReviews = './reviews.json';
 const dbReviews = require(fileNameForReviews);
 
+// get request to get all reviews for a flashcard, id specified in parameter
 app.get('/reviews/:flashcard_id', function (req, resp) {
     const flashcardId = req.params.flashcard_id;
     const selectedReviews = dbReviews.reviews.filter(obj => {
@@ -33,6 +36,8 @@ app.get('/reviews/:flashcard_id', function (req, resp) {
     resp.body = selectedReviews;
     resp.send(resp.body);
 });
+
+// get request to search flashcards based on query, returns all flashcards which have the charcters in the query, not case sensitive
 app.get('/flashcards/search', function (req, resp) {
     const searchQuery = req.query.searchquery;
     const searchResult = [];
@@ -44,6 +49,8 @@ app.get('/flashcards/search', function (req, resp) {
     resp.body = searchResult;
     resp.send(searchResult);
 });
+
+// get request to get all ratings for a flashcard , id specfied in parameter
 app.get('/reviews/:flashcard_id/rating', function (req, resp) {
     const flashcardId = req.params.flashcard_id;
     const selectedReviews = dbReviews.reviews.filter(obj => {
@@ -55,6 +62,7 @@ app.get('/reviews/:flashcard_id/rating', function (req, resp) {
     resp.send(resp.body);
 });
 
+// post request which posts the flashcard the user input onto the flashcards.json file and returns all flashcards
 app.post('/flashcards/add', function (req, resp) {
     const newFlashcard = {};
     newFlashcard.id = dbFlashcards.flashcards[dbFlashcards.flashcards.length - 1].id + 1;
@@ -67,6 +75,7 @@ app.post('/flashcards/add', function (req, resp) {
     resp.send(dbFlashcards);
 });
 
+// post request to update a flashcard as specified by the user and updates the flashcards.json file respectively, returns all flashcards
 app.post('/flashcards/update', function (req, resp) {
     let index = 0;
     for (let i = 0; i < dbFlashcards.flashcards.length; i++) {
@@ -82,6 +91,7 @@ app.post('/flashcards/update', function (req, resp) {
     resp.send(dbFlashcards);
 });
 
+// post request to all user to add reviews to a flashcard, updates the reviews.json file and returns all reviews as well
 app.post('/reviews/add', function (req, resp) {
     const newReview = {};
     newReview.id = dbReviews.reviews[dbReviews.reviews.length - 1].id + 1;
@@ -95,4 +105,5 @@ app.post('/reviews/add', function (req, resp) {
     fs.writeFileSync(fileNameForReviews, JSON.stringify(dbReviews));
     resp.send(dbReviews);
 });
+
 module.exports = app;
