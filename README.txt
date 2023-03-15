@@ -30,3 +30,6 @@ Then, click the "Click to select a flashcard" (if this is not done, submitting t
 To help you find a flashcard, either sort by subject, front or back (alphabetically) or date date_of_creation, or search by the front of the flashcard, note that you cannot search and sort simultaneously.
 Then, the current front, back and subject of the flashcard will show in the form, change these and then click the "Submit edits" button or press enter to post these changes so that the flashcard is editted.
 This automatically refreshes the flashcards shown so if the flashcard was showing before, no need to refresh anything in order to see the edits just made.
+
+7. Link to documentation:
+https://documenter.getpostman.com/view/26167458/2s93JrvQGU
