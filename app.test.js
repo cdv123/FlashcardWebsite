@@ -12,7 +12,7 @@ const fileNameForReviews = './reviews.json'
 const dbFlashcards = require(fileNameForFlashcards)
 const dbReviews = require(fileNameForReviews)
 
-// Test GET /flashcards works as intended
+// test GET /flashcards works as intended
 describe('Test GET /flashcards', () => {
     // test that GET /flashcards returns 200 - indicating that the request has succeeded 
     test('GET  /flashcards succeeds', () => {
@@ -50,14 +50,11 @@ describe('Test POST /flashcards/add', () =>{
             .send(params)
             .expect(200)
             .then(res => {
-                //expect JSON content-type
-                
-
-                //delete flashcard that was just added
                 dbFlashcards.flashcards.pop()
                 fs.writeFileSync(fileNameForFlashcards, JSON.stringify(dbFlashcards));
             })
     }),
+    // test that POST /flashcards/add posts in the right format
     test('POST  /flashcards/add posts JSON', () => {
         return request(app)
             .post('/flashcards/add')
@@ -71,6 +68,7 @@ describe('Test POST /flashcards/add', () =>{
             });
                 
     }),
+    // test that flashcards.json contains the flashcard just posted with POST flashcards/add
     test('POST  /flashcards/add contains the flashcard just posted', () => {
         return request(app)
             .post('/flashcards/add')
@@ -87,20 +85,25 @@ describe('Test POST /flashcards/add', () =>{
                 
     })
 })
+// test that /flashcards/update works as intended
 describe('Test /flashcards/update', () => {
+    //define the paramters for the flashcard update
     const params = {id: 6, date_of_creation: 'Fri Mar 03 2023 15:00:00 GMT+0000 (Greenwich Mean Time)', front:'What can be said about the inverse of an orthogonal matrix', back:'The inverse is also an orthogonal matrix', subject:'Maths'};
+    // test that POST /flashcards/update returns 200, indicating the the request has succeeded                                                                                                                                        returns 200, indicating that the request has succeeded
     test('POST  /flashcards/update succeeds', () => {
         return request(app)
             .post('/flashcards/update')
             .send(params)
             .expect(200)
     })
+    // test that POST /flashcards/update returns the content in the right format (JSON)
     test('POST  /flashcards/update posts JSON', () => {
         return request(app)
             .post('/flashcards/update')
             .send(params)
                 .expect('Content-type', /json/);
     }),
+    // test that POST /flashcards/update actually edits the flashcard by checking the edit is present after posting the edit
     test('POST  /flashcards/update contains edit that was just made', () => {
         return request(app)
             .post('/flashcards/update')
@@ -110,7 +113,9 @@ describe('Test /flashcards/update', () => {
     })
 }) 
 describe('Test /reviews/add', () => {
+    // define the parameters of the review to be posted
     const params = {id:18,flashcard_id: '10',reviewer_name: 'Sarah',review_date: '02/03/2023 14:30',review_title: 'Great flashcard!',rating: '5/5',comment: 'I found this flashcard to be really helpful! The information was presented clearly and concisely, and it was easy to remember. Would definitely recommend to others!'};
+    // test that POST /reviews/add returns 200, hence indicating that the request has succeeded
     test('POST  /reviews/add succeeds', () => {
         return request(app)
             .post('/reviews/add')
@@ -121,6 +126,7 @@ describe('Test /reviews/add', () => {
                 fs.writeFileSync(fileNameForReviews, JSON.stringify(dbReviews))
             })
     })
+    // test that POST /reviews/add returns content in the right format (JSON)
     test('POST  /reviews/add returns a JSON', () => {
         return request(app)
             .post('/reviews/add')
