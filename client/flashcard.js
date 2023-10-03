@@ -210,7 +210,7 @@ async function postEdits (flashcardID) {
         editFlashcardForm.reset();
         }
         catch{
-
+            alert("Lost connection to server, cannot post edits")
         }
     });
 }
